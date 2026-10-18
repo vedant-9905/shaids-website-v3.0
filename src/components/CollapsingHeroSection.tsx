@@ -3,9 +3,18 @@
 import { useRef, useSyncExternalStore } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import RandomSplitText from "./RandomSplitText";
 import HeroImageCarousel from "./HeroImageCarousel";
+import {
+  AcmBadge,
+  ShieldBadge,
+  ShaidsSealBadge,
+  DesktopPcIllustration,
+  LaptopIllustration,
+  TechMicroDoodles,
+  NoodleClusterLeft,
+  NoodleClusterRight,
+} from "./Hero3DArt";
 
 function subscribeWindowResize(callback: () => void) {
   window.addEventListener("resize", callback);
@@ -15,110 +24,28 @@ function getWindowHeightSnapshot() { return window.innerHeight; }
 function getWindowHeightServerSnapshot() { return 800; }
 
 /* ============================================================
-   Squiggle SVG Components — hand-drawn organic noodle shapes
+   The 3-Badge Header Row (ACM Diamond, Radiant Shield, SHAIDS Seal)
+   Matches the iconic emblem trio from the v3.0 banner
 ============================================================ */
-
-function SquiggleLeft() {
+function TopBadgeTrio() {
   return (
-    <svg width="220" height="520" viewBox="0 0 220 520" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none" aria-hidden>
-      {/* Red thick noodle */}
-      <path d="M40 10 Q80 60 30 110 Q-20 160 50 210 Q120 260 20 310 Q-40 360 40 420 Q100 470 30 510" stroke="#e63022" strokeWidth="22" strokeLinecap="round" fill="none"/>
-      <path d="M40 10 Q80 60 30 110 Q-20 160 50 210 Q120 260 20 310 Q-40 360 40 420 Q100 470 30 510" stroke="#ff6a5a" strokeWidth="10" strokeLinecap="round" fill="none"/>
-      {/* Blue noodle */}
-      <path d="M90 30 Q130 90 70 150 Q10 210 80 270 Q150 330 60 390 Q-10 450 70 500" stroke="#1a55cc" strokeWidth="22" strokeLinecap="round" fill="none"/>
-      <path d="M90 30 Q130 90 70 150 Q10 210 80 270 Q150 330 60 390 Q-10 450 70 500" stroke="#5a8cff" strokeWidth="10" strokeLinecap="round" fill="none"/>
-      {/* Light blue thin */}
-      <path d="M140 20 Q170 80 120 130 Q60 190 140 240 Q200 280 140 340 Q80 400 160 460" stroke="#5aa4e8" strokeWidth="16" strokeLinecap="round" fill="none"/>
-      <path d="M140 20 Q170 80 120 130 Q60 190 140 240 Q200 280 140 340 Q80 400 160 460" stroke="#a0d0ff" strokeWidth="8" strokeLinecap="round" fill="none"/>
-      {/* Green noodle */}
-      <path d="M180 60 Q210 120 160 180 Q100 250 180 300 Q240 340 170 400 Q110 450 200 490" stroke="#2a7a52" strokeWidth="18" strokeLinecap="round" fill="none"/>
-      <path d="M180 60 Q210 120 160 180 Q100 250 180 300 Q240 340 170 400 Q110 450 200 490" stroke="#4fc080" strokeWidth="9" strokeLinecap="round" fill="none"/>
-      {/* Pink noodle */}
-      <path d="M60 80 Q100 140 40 200 Q-20 270 80 320 Q160 360 60 430" stroke="#f06090" strokeWidth="20" strokeLinecap="round" fill="none"/>
-      <path d="M60 80 Q100 140 40 200 Q-20 270 80 320 Q160 360 60 430" stroke="#ffaac4" strokeWidth="10" strokeLinecap="round" fill="none"/>
-      {/* Cyan small */}
-      <path d="M110 100 Q150 160 90 220 Q30 290 120 350" stroke="#22d6c8" strokeWidth="14" strokeLinecap="round" fill="none"/>
-      {/* Yellow small noodle */}
-      <path d="M170 120 Q210 190 150 260 Q90 330 180 380" stroke="#f0d020" strokeWidth="16" strokeLinecap="round" fill="none"/>
-      {/* Purple accent */}
-      <path d="M30 200 Q80 260 20 320 Q-30 380 60 440" stroke="#6040cc" strokeWidth="14" strokeLinecap="round" fill="none"/>
-      <path d="M30 200 Q80 260 20 320 Q-30 380 60 440" stroke="#9a7aff" strokeWidth="7" strokeLinecap="round" fill="none"/>
-      {/* Teal */}
-      <path d="M200 200 Q240 270 180 340 Q120 410 210 460" stroke="#22d6c8" strokeWidth="18" strokeLinecap="round" fill="none"/>
-    </svg>
-  );
-}
-
-function SquiggleRight() {
-  return (
-    <svg width="220" height="520" viewBox="0 0 220 520" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none" aria-hidden>
-      {/* Cyan big noodle */}
-      <path d="M180 10 Q140 60 190 110 Q240 160 170 210 Q100 260 200 310 Q260 360 180 420 Q120 470 190 510" stroke="#22d6c8" strokeWidth="22" strokeLinecap="round" fill="none"/>
-      <path d="M180 10 Q140 60 190 110 Q240 160 170 210 Q100 260 200 310 Q260 360 180 420 Q120 470 190 510" stroke="#a0f5f0" strokeWidth="10" strokeLinecap="round" fill="none"/>
-      {/* Purple noodle */}
-      <path d="M130 30 Q90 90 150 150 Q210 210 140 270 Q70 330 160 390 Q230 450 150 500" stroke="#6040cc" strokeWidth="22" strokeLinecap="round" fill="none"/>
-      <path d="M130 30 Q90 90 150 150 Q210 210 140 270 Q70 330 160 390 Q230 450 150 500" stroke="#a080ff" strokeWidth="10" strokeLinecap="round" fill="none"/>
-      {/* Pink */}
-      <path d="M80 20 Q50 80 100 130 Q160 190 80 240 Q20 280 80 340 Q140 400 60 460" stroke="#f06090" strokeWidth="18" strokeLinecap="round" fill="none"/>
-      {/* Red small */}
-      <path d="M40 60 Q10 120 60 180 Q120 250 40 300 Q-20 340 50 400" stroke="#e63022" strokeWidth="16" strokeLinecap="round" fill="none"/>
-      <path d="M40 60 Q10 120 60 180 Q120 250 40 300 Q-20 340 50 400" stroke="#ff8877" strokeWidth="8" strokeLinecap="round" fill="none"/>
-      {/* Blue */}
-      <path d="M170 80 Q140 140 200 200 Q240 260 180 320 Q120 380 200 430" stroke="#1a55cc" strokeWidth="20" strokeLinecap="round" fill="none"/>
-      {/* Yellow */}
-      <path d="M60 120 Q30 190 90 260 Q150 330 60 400" stroke="#f0d020" strokeWidth="18" strokeLinecap="round" fill="none"/>
-      {/* Green */}
-      <path d="M100 100 Q70 170 130 240 Q190 310 100 380 Q40 440 130 490" stroke="#2a7a52" strokeWidth="16" strokeLinecap="round" fill="none"/>
-    </svg>
-  );
-}
-
-/* Hand-drawn computer illustration SVG */
-function ComputerIllustration() {
-  return (
-    <svg width="120" height="90" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none" aria-hidden>
-      <rect x="8" y="6" width="80" height="54" rx="3" stroke="white" strokeWidth="2.5" strokeLinejoin="round"/>
-      <line x1="25" y1="18" x2="55" y2="40" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="45" y1="16" x2="65" y2="38" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="8" y1="60" x2="88" y2="60" stroke="white" strokeWidth="2"/>
-      <path d="M38 60 L33 72 L53 72" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <rect x="96" y="12" width="20" height="14" rx="2" stroke="white" strokeWidth="2"/>
-      <circle cx="104" cy="78" r="7" stroke="white" strokeWidth="2"/>
-      <rect x="88" y="72" width="26" height="12" rx="2" stroke="white" strokeWidth="2"/>
-    </svg>
-  );
-}
-
-/* Hand-drawn laptop illustration SVG */
-function LaptopIllustration() {
-  return (
-    <svg width="110" height="80" viewBox="0 0 110 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none" aria-hidden>
-      <path d="M15 10 L85 10 L95 55 L5 55 Z" stroke="white" strokeWidth="2.5" strokeLinejoin="round"/>
-      <line x1="28" y1="22" x2="60" y2="46" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="50" y1="20" x2="72" y2="43" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M2 56 L108 56 L104 68 L6 68 Z" stroke="white" strokeWidth="2.5" strokeLinejoin="round"/>
-      <rect x="45" y="60" width="20" height="4" rx="2" stroke="white" strokeWidth="1.5"/>
-    </svg>
-  );
-}
-
-/* Badge row (logos) */
-function BadgeRow() {
-  return (
-    <div className="flex items-center justify-center gap-6 mb-8">
-      {/* ACM placeholder badge */}
-      <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-        <span className="text-white text-[9px] font-bold tracking-wider">ACM</span>
-      </div>
-      {/* SHAIDS logo */}
-      <div className="relative w-10 h-10">
-        <Image src="/images/shaids-logo.png" alt="SHAIDS" fill className="object-contain" priority />
-      </div>
-      {/* ACPCE logo */}
-      <div className="relative w-10 h-10">
-        <Image src="/images/acpce-logo.png" alt="ACPCE" fill className="object-contain" priority />
-      </div>
+    <div className="flex items-center justify-center gap-5 md:gap-7 mb-3 md:mb-5 pointer-events-auto">
+      {/* 1. ACM Diamond Chapter Badge */}
+      <AcmBadge />
+      {/* 2. Glowing Fiery Heraldic Shield with Star */}
+      <ShieldBadge />
+      {/* 3. Circular Department Seal */}
+      <ShaidsSealBadge />
     </div>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
   );
 }
 
@@ -142,20 +69,19 @@ export default function CollapsingHeroSection() {
   const cardHeight = useTransform(scrollYProgress, [0, 1.0], [`${winHeight}px`, "560px"], { ease: easeOutCubic });
   const cardMarginTop = useTransform(scrollYProgress, [0, 1.0], ["0px", "59px"], { ease: easeOutCubic });
 
-  /* Hero content fade out */
+  /* Hero content fade out on scroll */
   const heroTextOpacity    = useTransform(scrollYProgress, [0, 0.28], [1, 0]);
   const heroTextY          = useTransform(scrollYProgress, [0, 0.28], [0, -30], { ease: easeOutCubic });
   const heroTextVisibility = useTransform(scrollYProgress, (v) => v >= 0.28 ? "hidden" : "visible");
   const heroTextDisplay    = useTransform(scrollYProgress, (v) => v >= 0.30 ? "none" : "flex");
 
-  /* Squiggle parallax — they drift differently */
-  const squiggleLeftX  = useTransform(scrollYProgress, [0, 1], [0, -40], { ease: easeOutCubic });
-  const squiggleRightX = useTransform(scrollYProgress, [0, 1], [0, 40],  { ease: easeOutCubic });
-  const squiggleY      = useTransform(scrollYProgress, [0, 1], [0, 60],  { ease: easeOutCubic });
+  /* Noodle parallax on scroll */
+  const noodleLeftX  = useTransform(scrollYProgress, [0, 0.28], [0, -120], { ease: easeOutCubic });
+  const noodleRightX = useTransform(scrollYProgress, [0, 0.28], [0, 120],  { ease: easeOutCubic });
 
   /* Sidebar content (revealed when collapsed) */
-  const lightContentOpacity = useTransform(scrollYProgress, [0.10, 0.55, 1.0], [0, 1, 1]);
-  const lightContentY       = useTransform(scrollYProgress, [0.10, 1.0], [140, 0], { ease: easeOutCubic });
+  const lightContentOpacity = useTransform(scrollYProgress, [0.12, 0.55, 1.0], [0, 1, 1]);
+  const lightContentY       = useTransform(scrollYProgress, [0.12, 1.0], [120, 0], { ease: easeOutCubic });
 
   /* Feature cards stagger */
   const card1X = useTransform(scrollYProgress, [0.18, 0.72, 1.0], [360, 0, 0], { ease: easeOutCubic });
@@ -165,19 +91,22 @@ export default function CollapsingHeroSection() {
   const card2Opacity = useTransform(scrollYProgress, [0.28, 0.62, 1.0], [0, 1, 1]);
   const card3Opacity = useTransform(scrollYProgress, [0.38, 0.76, 1.0], [0, 1, 1]);
 
-  /* Collapsed card dashboard content */
-  const collapsedContentOpacity = useTransform(scrollYProgress, [0, 0.45, 0.92, 1.0], [0, 0, 1, 1]);
-  const collapsedContentDisplay = useTransform(scrollYProgress, (v) => v >= 0.42 ? "flex" : "none");
+  /* Collapsed card dashboard content (fades in as card shrinks) */
+  const collapsedContentOpacity = useTransform(scrollYProgress, [0, 0.35, 0.75, 1.0], [0, 0, 1, 1]);
+  const collapsedContentDisplay = useTransform(scrollYProgress, (v) => v >= 0.32 ? "flex" : "none");
 
   return (
     <section ref={containerRef} className="relative w-full bg-black" style={{ height: "400vh" }}>
       <motion.div
-        className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center bg-black"
+        className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[#000000]"
       >
+        {/* Subtle background ambient dot grid */}
+        <div className="absolute inset-0 dot-grid opacity-60 pointer-events-none z-0" />
+
         {/* ── Sidebar Content (revealed on collapse) ── */}
         <motion.div
           style={{ opacity: lightContentOpacity, y: lightContentY }}
-          className="absolute inset-0 flex items-center justify-center w-full h-full px-4 md:px-7 pointer-events-auto overflow-hidden"
+          className="absolute inset-0 flex items-center justify-center w-full h-full px-4 md:px-7 pointer-events-auto overflow-hidden z-10"
         >
           <motion.div
             style={{ marginTop: cardMarginTop }}
@@ -186,13 +115,18 @@ export default function CollapsingHeroSection() {
             {/* Left Column */}
             <div className="flex-1 max-w-[440px] h-[560px] flex flex-col justify-between">
               <div>
-                <div className="w-[5px] h-[5px] bg-[#e63022] mb-4" />
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-[6px] h-[6px] bg-[#e63022]" />
+                  <span className="text-[11px] font-mono tracking-[2px] uppercase text-[#e63022] font-bold">
+                    ACPCE · AI & DATA SCIENCE
+                  </span>
+                </div>
                 <div className="select-none">
                   <h2
                     className="text-white"
                     style={{
                       fontFamily: `'Archivo', sans-serif`,
-                      fontSize: "clamp(40px, 4.8vw, 72px)",
+                      fontSize: "clamp(38px, 4.6vw, 68px)",
                       fontWeight: 900,
                       letterSpacing: "-2.5px",
                       lineHeight: "0.9"
@@ -201,10 +135,10 @@ export default function CollapsingHeroSection() {
                     <RandomSplitText text="Pioneering:" initialDelay={0.05} scrollYProgress={scrollYProgress} triggerThreshold={0.06} />
                   </h2>
                   <div
-                    className="text-white/80 mt-2"
+                    className="text-white/85 mt-2"
                     style={{
                       fontFamily: `'Archivo', sans-serif`,
-                      fontSize: "clamp(24px, 3vw, 44px)",
+                      fontSize: "clamp(24px, 3vw, 42px)",
                       fontWeight: 700,
                       letterSpacing: "-1.4px",
                       lineHeight: "1.05"
@@ -216,6 +150,20 @@ export default function CollapsingHeroSection() {
                   </div>
                 </div>
               </div>
+
+              {/* Middle Metric Chips */}
+              <div className="flex flex-wrap gap-2 my-2">
+                <span className="text-[10px] font-mono tracking-[1.2px] text-white/70 uppercase px-2.5 py-1 bg-white/5 border border-white/10">
+                  NAAC A+ ACCREDITED
+                </span>
+                <span className="text-[10px] font-mono tracking-[1.2px] text-white/70 uppercase px-2.5 py-1 bg-white/5 border border-white/10">
+                  120 ANNUAL INTAKE
+                </span>
+                <span className="text-[10px] font-mono tracking-[1.2px] text-white/70 uppercase px-2.5 py-1 bg-white/5 border border-white/10">
+                  AUTONOMOUS LABS
+                </span>
+              </div>
+
               <div>
                 <p className="text-[14px] text-white/60 font-normal leading-[1.55] max-w-[390px] tracking-tight">
                   Built by students, powered by late-night code sessions, department hackathons, and pure curiosity. SHAIDS is the official student body of the AI & Data Science Department at ACPCE.
@@ -223,26 +171,30 @@ export default function CollapsingHeroSection() {
               </div>
             </div>
 
-            {/* Middle spacer */}
+            {/* Middle spacer (where collapsed card sits) */}
             <div className="w-[32%] shrink-0 h-[560px] relative pointer-events-none" />
 
             {/* Right Column — Feature Cards */}
             <div className="flex-1 max-w-[440px] h-[560px] flex flex-col justify-between">
               {[
-                { x: card1X, opacity: card1Opacity, num: "01", title: "Community Driven", desc: "Built by students, for students. We foster a collaborative environment where knowledge is shared freely." },
-                { x: card2X, opacity: card2Opacity, num: "02", title: "Innovation First", desc: "From Generative AI to Big Data, we explore the cutting edge of technology through hands-on projects." },
-                { x: card3X, opacity: card3Opacity, num: "03", title: "Excellence", desc: "Participate in seminars, workshops, and competitions to hone your skills and showcase your talent." },
+                { x: card1X, opacity: card1Opacity, num: "01", accent: "#e63022", title: "Community Driven", desc: "Built by students, for students. We foster a collaborative environment where knowledge is shared freely." },
+                { x: card2X, opacity: card2Opacity, num: "02", accent: "#1a55cc", title: "Innovation First", desc: "From Generative AI to Big Data, we explore the cutting edge of technology through hands-on projects." },
+                { x: card3X, opacity: card3Opacity, num: "03", accent: "#22d6c8", title: "Excellence", desc: "Participate in seminars, workshops, and competitions to hone your skills and showcase your talent." },
               ].map((card) => (
                 <motion.div
                   key={card.num}
                   style={{ x: card.x, opacity: card.opacity }}
-                  className="h-[178px] relative p-5 bg-white/5 backdrop-blur-md border border-white/10 flex flex-col justify-between"
+                  className="h-[178px] relative p-5 bg-white/5 backdrop-blur-md border border-white/10 flex flex-col justify-between group hover:bg-white/8 transition-colors"
                 >
-                  <div>
-                    <span className="bg-[#e63022] text-white px-2 py-0.5 text-[10px] font-mono font-bold tracking-[1.5px] uppercase flex items-center gap-1.5 w-fit select-none">
+                  <div className="flex items-center justify-between">
+                    <span
+                      className="text-white px-2 py-0.5 text-[10px] font-mono font-bold tracking-[1.5px] uppercase flex items-center gap-1.5 w-fit select-none"
+                      style={{ backgroundColor: card.accent }}
+                    >
                       <span className="w-1 h-1 bg-white inline-block" />
                       {card.num}
                     </span>
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: card.accent }} />
                   </div>
                   <div className="mt-auto">
                     <h3 className="text-[18px] font-bold tracking-tight text-white leading-tight select-none">
@@ -258,22 +210,6 @@ export default function CollapsingHeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* ── Squiggle Decorations (outside card, parallax on scroll) ── */}
-        <motion.div
-          style={{ x: squiggleLeftX, y: squiggleY }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none z-10 sq-float-a sq-delay-1"
-          aria-hidden
-        >
-          <SquiggleLeft />
-        </motion.div>
-        <motion.div
-          style={{ x: squiggleRightX, y: squiggleY }}
-          className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none z-10 sq-float-b sq-delay-2"
-          aria-hidden
-        >
-          <SquiggleRight />
-        </motion.div>
-
         {/* ── The Collapsing Hero Card ── */}
         <motion.div
           id="hero-collapse-card"
@@ -283,57 +219,96 @@ export default function CollapsingHeroSection() {
             marginTop: cardMarginTop,
             backgroundColor: "#000000",
           }}
-          className="has-pin has-pin--top-left has-pin--bottom-right has-pin__red absolute z-20 flex flex-col items-center justify-center overflow-hidden border border-white/10"
+          className="has-pin has-pin--top-left has-pin--bottom-right has-pin__red absolute z-20 flex flex-col items-center justify-center overflow-hidden border border-white/12 shadow-[0_0_50px_rgba(0,0,0,0.8)]"
         >
-          {/* Subtle dot grid texture */}
-          <div className="absolute inset-0 dot-grid opacity-100 pointer-events-none z-0" />
+          {/* Subtle dot texture inside card */}
+          <div className="absolute inset-0 dot-grid opacity-80 pointer-events-none z-0" />
 
-          {/* ── Initial Hero Content ── */}
+          {/* ── Initial Hero Content (Uncollapsed State) ── */}
           <motion.div
             style={{ opacity: heroTextOpacity, y: heroTextY, visibility: heroTextVisibility, display: heroTextDisplay }}
-            className="absolute inset-0 flex flex-col items-center justify-between px-4 md:px-10 pt-20 md:pt-24 pb-8 w-full z-20 pointer-events-none"
+            className="absolute inset-0 flex flex-col items-center justify-between px-3 md:px-8 pt-18 md:pt-22 pb-6 md:pb-8 w-full h-full z-20 pointer-events-none overflow-hidden"
           >
-            {/* Badge row at top */}
-            <div className="w-full flex flex-col items-center pointer-events-auto">
-              <BadgeRow />
+            {/* ── 3D Noodle Wings Inside Hero Viewport (Left & Right) ── */}
+            <motion.div
+              style={{ x: noodleLeftX }}
+              className="absolute -left-6 sm:left-0 md:left-2 top-1/2 -translate-y-1/2 pointer-events-none z-10 sq-float-a sq-delay-1"
+              aria-hidden
+            >
+              <div className="scale-65 sm:scale-80 md:scale-95 lg:scale-100 origin-left">
+                <NoodleClusterLeft />
+              </div>
+            </motion.div>
+
+            <motion.div
+              style={{ x: noodleRightX }}
+              className="absolute -right-6 sm:right-0 md:right-2 top-1/2 -translate-y-1/2 pointer-events-none z-10 sq-float-b sq-delay-2"
+              aria-hidden
+            >
+              <div className="scale-65 sm:scale-80 md:scale-95 lg:scale-100 origin-right">
+                <NoodleClusterRight />
+              </div>
+            </motion.div>
+
+            {/* Floating Micro Tech Doodles */}
+            <TechMicroDoodles />
+
+            {/* 1. Top: The Emblem Trio (ACM, Radiant Shield, SHAIDS Seal) */}
+            <div className="w-full flex flex-col items-center pointer-events-auto relative z-20">
+              <TopBadgeTrio />
             </div>
 
-            {/* Giant SHAIDS wordmark — center */}
-            <div className="flex flex-col items-center text-center pointer-events-auto select-none w-full">
-              {/* Massive title */}
+            {/* 2. Center: Giant SHAIDS Wordmark & 2026-27 Sub-Title + Hand-Drawn Sketches */}
+            <div className="relative flex flex-col items-center text-center pointer-events-auto select-none w-full my-auto z-20 max-w-[1300px] px-2">
+              {/* Massive SHAIDS Title */}
               <div
                 className="text-white leading-none font-black tracking-tight w-full text-center"
                 style={{
                   fontFamily: `'Archivo', sans-serif`,
-                  fontSize: "clamp(80px, 18vw, 260px)",
+                  fontSize: "clamp(72px, 16vw, 240px)",
                   fontWeight: 900,
-                  letterSpacing: "-6px",
-                  lineHeight: "0.84",
+                  letterSpacing: "-5px",
+                  lineHeight: "0.82",
                 }}
               >
                 <RandomSplitText text="SHAIDS" initialDelay={0.05} />
               </div>
 
-              {/* Academic year sub-line */}
+              {/* Academic Session Sub-Title "2026-27" */}
               <div
-                className="text-white/90 mt-2 tracking-wider font-black"
+                className="text-white mt-1 md:mt-2 font-black tracking-wider text-center"
                 style={{
                   fontFamily: `'Archivo', sans-serif`,
-                  fontSize: "clamp(18px, 3.5vw, 52px)",
+                  fontSize: "clamp(26px, 5.5vw, 84px)",
                   fontWeight: 900,
-                  letterSpacing: "2px",
+                  letterSpacing: "1px",
+                  lineHeight: "0.95",
                 }}
               >
                 2026-27
               </div>
 
-              {/* Thin descriptor */}
-              <p className="mt-4 text-white/45 text-[13px] font-mono tracking-[2px] uppercase">
-                Dept. of AI & Data Science · ACPCE Navi Mumbai
+              {/* Hand-Drawn Desktop PC Illustration (Directly Under "SH") */}
+              <div className="absolute left-[2%] sm:left-[6%] md:left-[10%] bottom-[-55px] sm:bottom-[-45px] md:bottom-[-35px] pointer-events-none sq-float-c sq-delay-3 hidden sm:block">
+                <div className="scale-80 md:scale-100 origin-bottom-left opacity-90 hover:opacity-100 transition-opacity">
+                  <DesktopPcIllustration />
+                </div>
+              </div>
+
+              {/* Hand-Drawn Open Laptop Illustration (Directly Under "DS") */}
+              <div className="absolute right-[2%] sm:right-[6%] md:right-[10%] bottom-[-50px] sm:bottom-[-40px] md:bottom-[-30px] pointer-events-none sq-float-d sq-delay-4 hidden sm:block">
+                <div className="scale-80 md:scale-100 origin-bottom-right opacity-90 hover:opacity-100 transition-opacity">
+                  <LaptopIllustration />
+                </div>
+              </div>
+
+              {/* Department Descriptor */}
+              <p className="mt-4 md:mt-6 text-white/60 text-[11px] md:text-[13px] font-mono tracking-[2px] uppercase max-w-[580px] px-4">
+                Dept. of Artificial Intelligence & Data Science · ACPCE Navi Mumbai
               </p>
 
-              {/* CTA buttons */}
-              <div className="flex items-center gap-2 mt-7 pointer-events-auto">
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2.5 mt-5 md:mt-7 pointer-events-auto">
                 <Link href="/events" className="ui-button primary allow-parent-hover has-icon">
                   <div className="content btn-primary theme-dark">
                     <div className="btn-content">
@@ -359,26 +334,35 @@ export default function CollapsingHeroSection() {
               </div>
             </div>
 
-            {/* Bottom bar */}
-            <div className="w-full flex items-end justify-between pointer-events-auto relative z-10">
-              <div className="flex items-center gap-2">
-                {/* Computer illustration */}
-                <div className="sq-float-c sq-delay-3 opacity-80">
-                  <ComputerIllustration />
-                </div>
+            {/* 3. Bottom Bar: Status Ticker + Press Card */}
+            <div className="w-full flex items-end justify-between pointer-events-auto relative z-20 px-2 md:px-6">
+              {/* Left: Mobile-only mini doodle or status indicator */}
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-none mb-1">
+                <span className="w-2 h-2 rounded-full bg-[#22d6c8] animate-pulse" />
+                <span className="text-[10px] font-mono text-white/70 tracking-widest uppercase">
+                  ACTIVE SESSION 2026-27
+                </span>
               </div>
 
-              {/* Bottom right: latest press card */}
-              <Link href="/events" className="card-latest-press has-pin has-pin__red w-full max-w-[280px] md:max-w-[320px] group text-left relative z-10">
+              {/* Center: Live Fest Ticker / Status */}
+              <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-none mb-1">
+                <span className="w-2 h-2 rounded-full bg-[#e63022] animate-pulse" />
+                <span className="text-[10px] font-mono text-white/70 tracking-widest uppercase">
+                  VECTORS 2026 LIVE · ADMISSIONS OPEN
+                </span>
+              </div>
+
+              {/* Bottom Right: Latest Press / Event Card */}
+              <Link href="/events" className="card-latest-press has-pin has-pin__red w-full sm:max-w-[280px] md:max-w-[320px] group text-left relative z-10">
                 <div className="header">
                   <div className="eyebrow flex items-center gap-1.5">
-                    <span className="w-1 h-1 bg-[#e63022] inline-block" />
+                    <span className="w-1.5 h-1.5 bg-[#e63022] inline-block" />
                     ANNUAL TECH FEST
                   </div>
-                  <div className="date">AUG 10, 2026</div>
+                  <div className="date">AUG 2026</div>
                 </div>
-                <div className="body mt-4">
-                  <div className="summary">
+                <div className="body mt-3">
+                  <div className="summary text-[13px] md:text-[14px]">
                     VECTORS 2026: National AI Hackathon & Tech Fest Announced
                   </div>
                   <div className="ui-button primary allow-parent-hover has-icon cta shrink-0">
@@ -394,7 +378,7 @@ export default function CollapsingHeroSection() {
             </div>
           </motion.div>
 
-          {/* ── Collapsed Dashboard Stats ── */}
+          {/* ── Collapsed Dashboard Stats (Visible only when card collapses) ── */}
           <motion.div
             style={{ opacity: collapsedContentOpacity, display: collapsedContentDisplay }}
             className="absolute inset-0 z-30 flex flex-col justify-between px-5 md:px-6 pt-5 md:pt-6 pb-3.5 md:pb-4 text-white w-full h-full pointer-events-auto"
@@ -438,27 +422,7 @@ export default function CollapsingHeroSection() {
             </Link>
           </motion.div>
         </motion.div>
-
-        {/* Laptop illustration — floats outside card bottom right */}
-        <motion.div
-          style={{ opacity: heroTextOpacity }}
-          className="absolute bottom-8 right-[36%] z-30 pointer-events-none sq-float-d sq-delay-4"
-          aria-hidden
-        >
-          <div className="opacity-75">
-            <LaptopIllustration />
-          </div>
-        </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
-    </svg>
   );
 }
