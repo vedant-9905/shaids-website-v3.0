@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ArrowUp } from "lucide-react";
+import { ArrowUp, Heart } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -9,93 +9,115 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#000000] text-white pt-20 pb-12 relative border-t border-white/8">
-      <div className="layout-block px-6 md:px-12">
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
-
-          {/* Column 1: Newsletter & Department Info */}
-          <div className="flex flex-col md:pr-12 md:border-r border-white/8 pb-16 relative">
-            <div className="w-[5px] h-[5px] bg-[#e63022] mb-5" />
-            <h3 className="text-white mb-8" style={{ fontFamily: "'Archivo', sans-serif", fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 900, letterSpacing: "-1.2px", lineHeight: "1.05" }}>
-              Subscribe to SHAIDS updates:
-            </h3>
-
-            <div className="flex items-center w-full mb-16">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="bg-transparent border-b border-white/15 text-white placeholder:text-white/30 focus:outline-none focus:border-[#e63022] w-full py-3 mr-4 text-[13px] font-sans"
-              />
-              <div className="flex bg-[#e63022] hover:bg-[#bf1a0c] cursor-pointer transition-colors shrink-0">
-                <div className="mono-small px-4 py-3 font-bold text-white">
-                  SUBSCRIBE
-                </div>
-                <div className="flex items-center justify-center w-10 border-l border-white/10 bg-black/10">
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </div>
+    <footer className="w-full bg-[#0a0c14] text-white pt-20 pb-12 relative border-t border-white/10 overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 md:px-16">
+        
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+          
+          {/* Column 1: Platform Brand & Address */}
+          <div className="md:col-span-5 flex flex-col justify-between">
+            <div>
+              {/* Speech bubble badge */}
+              <div className="inline-flex items-center gap-2 bg-white text-black font-black text-sm px-3.5 py-1.5 rounded-full mb-6 select-none shadow-sm">
+                <span className="uppercase font-sans">SHAIDS</span>
+                <span className="bg-[#ccff00] text-black text-[10px] font-mono font-black px-2 py-0.5 rounded-full uppercase">
+                  AI&DS
+                </span>
               </div>
-            </div>
 
-            <div className="mt-auto">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-[5px] h-[5px] bg-[#e63022]" />
-                <span className="text-xl font-bold tracking-tight font-sans">ACPCE NAVI MUMBAI</span>
-              </div>
-              <p className="mono-small text-white/35 leading-relaxed">
-                Department of <span className="text-white/70">Artificial Intelligence & Data Science</span><br />
-                A. C. Patil College of Engineering, Kharghar, Navi Mumbai
+              <h3
+                className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white font-sans max-w-[360px]"
+              >
+                STUDENT HUB FOR AI & DATA SCIENCE
+              </h3>
+
+              <p className="text-white/60 text-sm font-medium mt-3 leading-relaxed max-w-[380px]">
+                The official digital ecosystem for the Department of Artificial Intelligence & Data Science at A. C. Patil College of Engineering, Navi Mumbai.
               </p>
             </div>
+
+            <div className="mt-8 font-mono text-[11px] text-white/40 leading-relaxed uppercase">
+              Kharghar, Navi Mumbai, Maharashtra 410210
+              <br />
+              Accredited NAAC A+ · Affiliated with University of Mumbai
+            </div>
           </div>
 
-          {/* Column 2: Structural Navigation */}
-          <div className="flex flex-col md:px-12 md:border-r border-white/8 pb-16">
-            <h4 className="mono-small text-[#e63022] font-bold mb-8">
-              NAVIGATION
+          {/* Column 2: Quick Links */}
+          <div className="md:col-span-4 flex flex-col">
+            <h4 className="font-mono text-xs font-black text-[#ccff00] uppercase tracking-widest mb-6">
+              QUICK NAVIGATION
             </h4>
-            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-[14px] font-medium mb-16 font-sans">
-              <Link href="/" className="hover:text-[#e63022] transition-colors text-white/70">Home</Link>
-              <Link href="/about" className="hover:text-[#e63022] transition-colors text-white/70">About Department</Link>
-              <Link href="/events" className="hover:text-[#e63022] transition-colors text-white/70">Events & Fests</Link>
-              <Link href="/resources" className="hover:text-[#e63022] transition-colors text-white/70">Student Resources</Link>
-              <Link href="/team" className="hover:text-[#e63022] transition-colors text-white/70">Faculty & Team</Link>
-              <Link href="/admin" className="hover:text-[#e63022] transition-colors text-white/70">Admin Dashboard</Link>
-            </div>
-            <div className="mt-auto flex gap-6 mono-small text-white/30">
-              <Link href="/about" className="hover:text-white/70 transition-colors">Academic Matrix</Link>
-              <Link href="/events" className="hover:text-white/70 transition-colors">Flagship Fests</Link>
+            <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-sm font-bold font-sans">
+              <Link href="/" className="text-white/70 hover:text-white transition-colors">Home</Link>
+              <Link href="/about" className="text-white/70 hover:text-white transition-colors">About Us</Link>
+              <Link href="/events" className="text-white/70 hover:text-white transition-colors">Events & Fests</Link>
+              <Link href="/resources" className="text-white/70 hover:text-white transition-colors">Resources</Link>
+              <Link href="/team" className="text-white/70 hover:text-white transition-colors">Faculty & Team</Link>
+              <Link href="/admin" className="text-white/70 hover:text-white transition-colors">Admin Portal</Link>
+              <Link href="/events/fests/vectors" className="text-white/70 hover:text-[#ccff00] transition-colors">Vectors '26</Link>
+              <Link href="/events/fests/kurukshetra" className="text-white/70 hover:text-[#ccff00] transition-colors">Kurukshetra</Link>
             </div>
           </div>
 
-          {/* Column 3: Channels & Back To Top */}
-          <div className="flex flex-col md:pl-12 pb-16 relative">
-            <div className="flex justify-between items-start mb-8">
-              <h4 className="mono-small text-[#1a55cc] font-bold">
-                CONNECT & SOCIAL
+          {/* Column 3: Connect & Back to top */}
+          <div className="md:col-span-3 flex flex-col justify-between">
+            <div>
+              <h4 className="font-mono text-xs font-black text-[#ccff00] uppercase tracking-widest mb-6">
+                CONNECT
               </h4>
-              <button onClick={scrollToTop} className="flex items-center gap-2 group cursor-pointer">
-                <span className="mono-small text-white/30 group-hover:text-white/70 transition-colors">
-                  BACK TO TOP
-                </span>
-                <div className="w-7 h-7 border border-white/15 flex items-center justify-center group-hover:bg-[#e63022] group-hover:border-[#e63022] transition-colors">
-                  <ArrowUp className="w-3.5 h-3.5 text-white" />
-                </div>
-              </button>
+              <div className="flex flex-col gap-2.5 text-sm font-medium">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white/70 hover:text-[#0038ff] transition-colors flex items-center justify-between"
+                >
+                  <span>LinkedIn Page</span>
+                  <span className="text-xs">↗</span>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white/70 hover:text-[#ccff00] transition-colors flex items-center justify-between"
+                >
+                  <span>Instagram Council</span>
+                  <span className="text-xs">↗</span>
+                </a>
+                <a
+                  href="https://acpce.ac.in"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white/70 hover:text-white transition-colors flex items-center justify-between"
+                >
+                  <span>ACPCE Official</span>
+                  <span className="text-xs">↗</span>
+                </a>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3 text-[14px] font-medium mb-16 font-sans">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#1a55cc] transition-colors text-white/70">LinkedIn</a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-[#e63022] transition-colors text-white/70">GitHub Repository</a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#f06090] transition-colors text-white/70">Instagram Committee</a>
-            </div>
-
-            <div className="mt-auto mono-small text-white/25">
-              © 2026 SHAIDS — Dept. of AI & Data Science, ACPCE
-            </div>
+            <button
+              onClick={scrollToTop}
+              className="mt-8 flex items-center justify-between px-5 py-2.5 rounded-full bg-white/10 hover:bg-[#ccff00] hover:text-black transition-all group font-mono text-xs font-bold uppercase tracking-wider"
+            >
+              <span>BACK TO TOP</span>
+              <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+            </button>
           </div>
 
         </div>
+
+        {/* ── Copyright & Attribution ── */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-white/40 uppercase">
+          <div>
+            © 2026 SHAIDS · ALL RIGHTS RESERVED
+          </div>
+          <div className="flex items-center gap-1">
+            BUILT WITH <Heart className="w-3.5 h-3.5 text-[#ccff00] fill-[#ccff00] inline" /> BY STUDENT ENGINEERS
+          </div>
+        </div>
+
       </div>
     </footer>
   );
