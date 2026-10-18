@@ -7,17 +7,30 @@ import { DoodleSparkle } from "./DoodleSVGs";
 
 export default function LeadershipAndStatsSection() {
   return (
-    <section className="relative w-full bg-white text-black px-6 sm:px-10 md:px-16 py-20 md:py-28 overflow-hidden border-t border-black/5">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="relative w-full bg-[#050508] text-white px-6 sm:px-10 md:px-16 py-20 md:py-28 overflow-hidden border-t border-white/10">
+      
+      {/* Background Subtle Tech Grid */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "48px 48px"
+        }}
+      />
+
+      <div className="max-w-[1280px] mx-auto relative z-10">
         
         {/* ── Top Metric Highlights Banner ── */}
-        <div className="bg-[#0038ff] text-white rounded-3xl md:rounded-[40px] p-8 md:p-14 mb-16 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#0022aa] text-white rounded-3xl md:rounded-[40px] p-8 md:p-14 mb-16 shadow-2xl relative overflow-hidden border border-white/20">
           {/* Subtle grid */}
-          <div className="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:32px_32px]" />
+          <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10 pb-8 border-b border-white/15">
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10 pb-8 border-b border-white/20">
             <div>
-              <span className="px-3 py-1 bg-[#ccff00] text-black font-mono text-[10px] font-black uppercase rounded-full tracking-wider">
+              <span className="px-3 py-1 bg-[#ffe600] text-black font-mono text-[10px] font-black uppercase rounded-full tracking-wider">
                 ACPCE AI & DS BY THE NUMBERS
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mt-3 font-sans">
@@ -26,7 +39,7 @@ export default function LeadershipAndStatsSection() {
             </div>
             <Link
               href="/about"
-              className="px-6 py-2.5 rounded-full bg-white hover:bg-[#ccff00] text-black font-mono text-xs font-black uppercase tracking-wider transition-colors shrink-0 flex items-center gap-1.5"
+              className="px-6 py-2.5 rounded-full bg-white hover:bg-[#ffe600] text-black font-mono text-xs font-black uppercase tracking-wider transition-colors shrink-0 flex items-center gap-1.5"
             >
               <span>EXPLORE DEPARTMENT</span>
               <ChevronRight className="w-4 h-4" />
@@ -35,14 +48,14 @@ export default function LeadershipAndStatsSection() {
 
           {/* 4 Numbers Grid */}
           <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="border-l-2 border-[#ccff00] pl-4">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#ccff00] font-sans">
+            <div className="border-l-2 border-[#ffe600] pl-4">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#ffe600] font-sans">
                 120
               </div>
               <div className="font-mono text-xs font-bold uppercase tracking-wider text-white/90 mt-1">
                 ANNUAL INTAKE
               </div>
-              <div className="text-xs text-white/60 font-medium mt-0.5">
+              <div className="text-xs text-white/70 font-medium mt-0.5">
                 Expanded capacity under Mumbai University
               </div>
             </div>
@@ -54,100 +67,86 @@ export default function LeadershipAndStatsSection() {
               <div className="font-mono text-xs font-bold uppercase tracking-wider text-white/90 mt-1">
                 ENROLLED STUDENTS
               </div>
-              <div className="text-xs text-white/60 font-medium mt-0.5">
+              <div className="text-xs text-white/70 font-medium mt-0.5">
                 Active undergraduate engineers
               </div>
             </div>
 
-            <div className="border-l-2 border-white/40 pl-4">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-white font-sans">
-                24+
+            <div className="border-l-2 border-[#00f5a0] pl-4">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#00f5a0] font-sans">
+                A+
               </div>
               <div className="font-mono text-xs font-bold uppercase tracking-wider text-white/90 mt-1">
-                FACULTY & MENTORS
+                NAAC ACCREDITED
               </div>
-              <div className="text-xs text-white/60 font-medium mt-0.5">
-                PhD scholars & industry certified staff
+              <div className="text-xs text-white/70 font-medium mt-0.5">
+                Institutional quality assurance rating
               </div>
             </div>
 
-            <div className="border-l-2 border-[#ccff00] pl-4">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#ccff00] font-sans">
-                NAAC A+
+            <div className="border-l-2 border-[#ff3b30] pl-4">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#ff3b30] font-sans">
+                100%
               </div>
               <div className="font-mono text-xs font-bold uppercase tracking-wider text-white/90 mt-1">
-                INSTITUTIONAL GRADE
+                PLACEMENT ASSISTANCE
               </div>
-              <div className="text-xs text-white/60 font-medium mt-0.5">
-                Highest accredited standard
+              <div className="text-xs text-white/70 font-medium mt-0.5">
+                Top tier AI & software recruiters
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── Department Leadership Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        {/* ── Leadership Quotes Cards ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          {/* Principal Card */}
-          <div className="bg-[#f6f8fb] rounded-3xl p-8 md:p-10 border border-black/8 flex flex-col justify-between group hover:shadow-lg transition-all">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-[10px] font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
-                  INSTITUTIONAL VISIONARY
-                </span>
-                <GraduationCap className="w-6 h-6 text-[#0038ff]" />
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-black font-sans">
+          {/* Card 1: Principal Message */}
+          <div className="bg-white/[0.04] border border-white/10 hover:border-white/20 p-8 sm:p-10 rounded-3xl md:rounded-[36px] flex flex-col justify-between space-y-6 transition-all backdrop-blur-xl">
+            <div className="space-y-4">
+              <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-white/10 text-white px-3 py-1 rounded-full border border-white/15">
+                PRINCIPAL'S VISION
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                 Dr. Sawata R. Deore
               </h3>
-              <div className="text-sm font-bold text-black/60 font-mono mt-1">
-                Principal, ACPCE · BE, ME, PhD Tech.
+              <div className="text-xs font-mono text-[#ffe600]">
+                Principal, A. C. Patil College of Engineering
               </div>
-
-              <p className="text-sm sm:text-base text-black/70 font-medium leading-relaxed mt-4">
-                "Our mission is to establish ACPCE's AI & Data Science Department as a beacon of research, producing engineers capable of architecting ethical, scalable, and high-impact artificial intelligence infrastructure for the global ecosystem."
+              <p className="text-sm text-white/75 leading-relaxed font-sans pt-2">
+                "Our Artificial Intelligence & Data Science department is crafted to be an engine of next-generation technological leadership, fostering algorithmic rigor and interdisciplinary problem solving."
               </p>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-black/8 flex items-center justify-between">
-              <span className="font-mono text-xs font-bold uppercase text-black/50">
-                OFFICE OF THE PRINCIPAL
-              </span>
-              <Link href="/about" className="font-mono text-xs font-black text-[#0038ff] uppercase hover:underline">
-                READ ADDRESS →
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/50">
+              <span>LEADERSHIP DESK</span>
+              <Link href="/about?tab=leadership" className="text-[#ffe600] font-bold hover:underline">
+                Read Address →
               </Link>
             </div>
           </div>
 
-          {/* HoD Card */}
-          <div className="bg-[#f6f8fb] rounded-3xl p-8 md:p-10 border border-black/8 flex flex-col justify-between group hover:shadow-lg transition-all">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-[10px] font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
-                  DEPARTMENT HEAD
-                </span>
-                <Award className="w-6 h-6 text-[#0038ff]" />
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-black font-sans">
+          {/* Card 2: HOD Message */}
+          <div className="bg-white/[0.04] border border-white/10 hover:border-white/20 p-8 sm:p-10 rounded-3xl md:rounded-[36px] flex flex-col justify-between space-y-6 transition-all backdrop-blur-xl">
+            <div className="space-y-4">
+              <span className="font-mono text-[10px] font-black uppercase tracking-wider bg-[#0055ff]/20 text-[#0055ff] border border-[#0055ff]/40 px-3 py-1 rounded-full">
+                HEAD OF DEPARTMENT
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                 Mrs. Shilpali Bansu
               </h3>
-              <div className="text-sm font-bold text-black/60 font-mono mt-1">
-                Head of Department, AI & Data Science
+              <div className="text-xs font-mono text-[#0055ff]">
+                Head of Department & Assistant Professor (AI & DS)
               </div>
-
-              <p className="text-sm sm:text-base text-black/70 font-medium leading-relaxed mt-4">
-                "At SHAIDS, student initiative drives our culture. From our annual flagship fest VECTORS to research capstones and SIGMOID publication, we cultivate the curious mindset required to master tomorrow's intelligent systems."
+              <p className="text-sm text-white/75 leading-relaxed font-sans pt-2">
+                "SHAIDS empowers students beyond traditional classroom learning. We blend intense research with hands-on hackathons and capstone incubators to produce engineers ready for the AI era."
               </p>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-black/8 flex items-center justify-between">
-              <span className="font-mono text-xs font-bold uppercase text-black/50">
-                DEPARTMENT LEADERSHIP
-              </span>
-              <Link href="/team" className="font-mono text-xs font-black text-[#0038ff] uppercase hover:underline">
-                FACULTY ROSTER →
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/50">
+              <span>HOD DESK</span>
+              <Link href="/about?tab=leadership" className="text-[#0055ff] font-bold hover:underline">
+                Read Address →
               </Link>
             </div>
           </div>

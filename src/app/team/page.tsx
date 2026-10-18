@@ -2,50 +2,48 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { 
+  Users, 
   Mail, 
-  Users,
-  Award,
-  Globe,
-  Share2
+  ArrowUpRight, 
+  ShieldCheck, 
+  Sparkles,
+  ExternalLink,
+  ChevronRight
 } from "lucide-react";
+import { useContent, AcademicYear, TeamMember } from "@/context/content-context";
+import { DoodleHashtag, DoodleCurvedArrowDown, DoodleSparkle } from "@/components/DoodleSVGs";
 
-function GithubIcon({ className = "" }: { className?: string }) {
+function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-      <path d="M9 18c-4.51 2-5-2-7-2" />
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
     </svg>
   );
 }
 
-function LinkedinIcon({ className = "" }: { className?: string }) {
+function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect width="4" height="12" x="2" y="9" />
-      <circle cx="4" cy="4" r="2" />
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z" />
     </svg>
   );
 }
 
-function InstagramIcon({ className = "" }: { className?: string }) {
+function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
     </svg>
   );
 }
-import { useContent, TeamMember } from "@/context/content-context";
-import { DoodleHashtag } from "@/components/DoodleSVGs";
 
-const DEFAULT_TEAM: TeamMember[] = [
+const DEFAULT_TEAM = [
   {
     id: "tm-1",
     name: "Mihir Gosavi",
-    role: "Student Committee President",
+    role: "President",
     category: "Core Committee",
     academicYear: "2026-27",
     image_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
@@ -128,200 +126,191 @@ export default function TeamPage() {
   const { team, academicYear, setAcademicYear } = useContent();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const membersToUse = team && team.length > 0 ? team : DEFAULT_TEAM;
-
-  const yearFiltered = membersToUse.filter((member) => {
-    if (!member.academicYear) return true;
-    return member.academicYear === academicYear;
-  });
-
-  const filteredMembers = yearFiltered.filter((member) => {
-    if (selectedCategory === "All") return true;
-    return member.category === selectedCategory;
-  });
+  const allMembers = team && team.length > 0 ? team : DEFAULT_TEAM;
+  const yearMembers = allMembers.filter(m => !m.academicYear || m.academicYear === academicYear);
+  const filteredMembers = yearMembers.filter(m => selectedCategory === "All" || m.category === selectedCategory);
 
   return (
-    <div className="w-full min-h-screen bg-[#f8fafd] text-black">
+    <div className="w-full min-h-screen bg-[#050508] text-white">
       
-      {/* ── Hero Banner (Electric Blue + Doodle Hashtag) ── */}
-      <section className="relative w-full bg-[#0038ff] text-white pt-32 md:pt-40 pb-16 md:pb-24 px-6 sm:px-10 md:px-16 overflow-hidden">
+      {/* ── Hero Banner (Pitch Black + Candy Doodle Accents) ── */}
+      <section className="relative w-full bg-[#000000] text-white pt-32 md:pt-40 pb-16 md:pb-24 px-6 sm:px-10 md:px-16 overflow-hidden border-b border-white/10">
         {/* Subtle grid */}
-        <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-15"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "48px 48px"
+          }}
+        />
 
-        <div className="relative max-w-[1280px] mx-auto">
+        <div className="relative max-w-[1280px] mx-auto z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/15 backdrop-blur-md border border-white/25 rounded-full text-white font-mono text-xs font-bold uppercase tracking-wider mb-6">
-                <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
-                STUDENT GOVERNANCE & COUNCIL
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white font-mono text-xs font-bold uppercase tracking-wider mb-6">
+                <span className="w-2 h-2 rounded-full bg-[#00f5a0] animate-pulse" />
+                STUDENT LEADERSHIP COUNCIL
               </div>
 
               <div className="flex items-center gap-3">
-                <DoodleHashtag className="w-12 sm:w-16 h-auto -mt-3" />
+                <DoodleHashtag className="w-12 sm:w-16 h-auto -mt-3" color="#ffe600" />
                 <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-none font-sans">
-                  STUDENT COUNCIL
+                  MEET THE COUNCIL
                 </h1>
               </div>
 
               <p className="text-white/80 max-w-2xl text-base sm:text-lg font-medium leading-relaxed mt-4">
-                The elected student leaders, technologists, event organizers, and researchers steering the SHAIDS committee.
+                The student leaders driving technical hackathons, industry summits, and academic community initiatives for SHAIDS.
               </p>
             </div>
 
-            {/* Academic Session Selector */}
-            <div className="flex items-center gap-1.5 p-1.5 bg-white/12 backdrop-blur-xl border border-white/20 rounded-full font-mono text-xs">
-              <button
-                onClick={() => setAcademicYear("2026-27")}
-                className={`px-4 sm:px-5 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
-                  academicYear === "2026-27"
-                    ? "bg-[#ccff00] text-black shadow-md"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                SESSION 2026–27
-              </button>
-              <button
-                onClick={() => setAcademicYear("2025-26")}
-                className={`px-4 sm:px-5 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
-                  academicYear === "2025-26"
-                    ? "bg-[#ccff00] text-black shadow-md"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                SESSION 2025–26
-              </button>
+            {/* Academic Session Selector Pill */}
+            <div className="flex items-center gap-1.5 p-1.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full font-mono text-xs">
+              {(["2026-27", "2025-26"] as AcademicYear[]).map((yr) => (
+                <button
+                  key={yr}
+                  onClick={() => setAcademicYear(yr)}
+                  className={`px-4 py-2 rounded-full font-bold uppercase tracking-wider transition-all duration-200 ${
+                    academicYear === yr
+                      ? "bg-[#ffe600] text-black shadow-md font-black"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  SESSION {yr}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2 pt-6 border-t border-white/15 font-mono text-xs">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
-                  selectedCategory === cat
-                    ? "bg-white text-black shadow-md"
-                    : "bg-white/10 hover:bg-white/20 text-white border border-white/15"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-white/10 font-mono text-xs">
+            {CATEGORIES.map((cat) => {
+              const active = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all duration-200 border ${
+                    active
+                      ? "bg-[#ffe600] border-[#ffe600] text-black shadow-md font-black"
+                      : "bg-white/[0.04] border-white/15 text-white/80 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── Council Members Grid ── */}
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 md:px-16 py-16 md:py-24">
+      {/* ── Team Members Grid ── */}
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 md:px-16 py-16 md:py-24 space-y-12">
         
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div>
-            <span className="font-mono text-xs font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
-              COUNCIL ROSTER
+            <span className="font-mono text-xs font-bold tracking-widest text-[#00f5a0] uppercase bg-[#00f5a0]/10 border border-[#00f5a0]/20 px-3 py-1 rounded-full">
+              OFFICERS & HEADS
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-3 font-sans">
-              ELECTED MEMBERS ({filteredMembers.length})
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight mt-3 font-sans text-white">
+              Student Committee ({filteredMembers.length})
             </h2>
           </div>
+          <span className="font-mono text-xs text-white/50">
+            Session {academicYear}
+          </span>
         </div>
 
-        {filteredMembers.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filteredMembers.map((member) => (
-              <div
-                key={member.id}
-                className="bg-white rounded-3xl p-6 sm:p-7 border border-black/8 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Photo & Category Pill */}
-                  <div className="relative w-full h-56 sm:h-64 rounded-2xl overflow-hidden mb-5 bg-[#f0f4f9]">
-                    <Image
-                      src={member.image_url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80"}
-                      alt={member.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 px-3 py-1 bg-black/60 backdrop-blur-md text-white font-mono text-[10px] font-bold uppercase rounded-full">
-                      {member.category}
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredMembers.map((member) => (
+            <div
+              key={member.id}
+              className="bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 hover:border-white/20 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group backdrop-blur-md"
+            >
+              <div>
+                {/* Member Avatar */}
+                <div className="relative w-full aspect-square bg-slate-900 rounded-2xl overflow-hidden border border-white/10 mb-5">
+                  <Image
+                    src={member.image_url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80"}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    unoptimized={Boolean(member.image_url?.startsWith("data:"))}
+                  />
+                </div>
 
-                  {/* Name & Role */}
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-black font-sans leading-tight">
-                    {member.name}
-                  </h3>
-                  <div className="text-xs font-bold text-[#0038ff] font-mono mt-1 uppercase">
-                    {member.role}
-                  </div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="px-3 py-1 bg-[#ffe600] text-black font-mono text-[10px] font-black uppercase rounded-full">
+                    {member.category || "Committee"}
+                  </span>
+                </div>
 
-                  {/* Bio */}
-                  {member.bio && (
-                    <p className="text-xs sm:text-sm text-black/65 font-medium leading-relaxed mt-2.5">
-                      {member.bio}
-                    </p>
+                <h3 className="text-2xl font-black uppercase tracking-tight text-white font-sans mt-2">
+                  {member.name}
+                </h3>
+                <div className="text-xs font-mono font-bold text-[#0055ff] mt-0.5">
+                  {member.role}
+                </div>
+
+                {member.bio && (
+                  <p className="text-xs sm:text-sm text-white/70 font-medium leading-relaxed mt-3 line-clamp-3">
+                    {member.bio}
+                  </p>
+                )}
+              </div>
+
+              {/* Social and Profile links */}
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  {member.github && (
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-full bg-white/10 hover:bg-white hover:text-black text-white flex items-center justify-center transition-colors"
+                      aria-label="GitHub"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0077b5] text-white flex items-center justify-center transition-colors"
+                      aria-label="LinkedIn"
+                    >
+                      <LinkedinIcon className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {member.email && (
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0055ff] text-white flex items-center justify-center transition-colors"
+                      aria-label="Email"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                    </a>
                   )}
                 </div>
 
-                {/* Social Links Footer */}
-                <div className="mt-6 pt-4 border-t border-black/8 flex items-center justify-between">
-                  <span className="font-mono text-[10px] font-bold text-black/40 uppercase">
-                    CONNECT
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {member.github && (
-                      <a
-                        href={member.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-7 h-7 rounded-full bg-[#f0f4f9] hover:bg-[#0038ff] hover:text-white text-black flex items-center justify-center transition-colors"
-                      >
-                        <GithubIcon className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                    {member.linkedin && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-7 h-7 rounded-full bg-[#f0f4f9] hover:bg-[#0038ff] hover:text-white text-black flex items-center justify-center transition-colors"
-                      >
-                        <LinkedinIcon className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                    {member.instagram && (
-                      <a
-                        href={member.instagram}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-7 h-7 rounded-full bg-[#f0f4f9] hover:bg-[#ccff00] hover:text-black text-black flex items-center justify-center transition-colors"
-                      >
-                        <InstagramIcon className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                    {member.email && (
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="w-7 h-7 rounded-full bg-[#f0f4f9] hover:bg-[#0038ff] hover:text-white text-black flex items-center justify-center transition-colors"
-                      >
-                        <Mail className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                  </div>
-                </div>
+                <Link
+                  href={`/team/${member.id}`}
+                  className="font-mono text-xs font-bold text-white hover:text-[#ffe600] flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                >
+                  Profile <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-3xl p-12 border border-black/8 text-center">
-            <p className="text-black/50 font-mono text-sm uppercase font-bold">
-              No team members found for this session or category.
-            </p>
-          </div>
-        )}
+            </div>
+          ))}
+        </div>
 
       </div>
-
     </div>
   );
 }

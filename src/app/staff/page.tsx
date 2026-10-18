@@ -11,7 +11,7 @@ import {
   Award
 } from "lucide-react";
 import { useContent } from "@/context/content-context";
-import { DoodleSparkle, DoodleSquiggleWave, CircularStampBadge } from "@/components/DoodleSVGs";
+import { DoodleSparkle, DoodleSquiggleWave, CircularStampBadge, DoodleHashtag } from "@/components/DoodleSVGs";
 
 const DEFAULT_STAFF = [
   {
@@ -52,83 +52,73 @@ export default function StaffPage() {
   const activeStaff = staff && staff.length > 0 ? staff : DEFAULT_STAFF;
 
   return (
-    <div className="w-full min-h-screen bg-[#f8fafc] text-slate-900 pb-24">
+    <div className="w-full min-h-screen bg-[#050508] text-white pb-24">
       
-      {/* Electric Cobalt Blue Faculty Hero Banner */}
-      <section className="relative w-full bg-[#0038ff] text-white pt-32 pb-24 px-4 md:px-8 overflow-hidden">
-        {/* Blueprint Grid Lines */}
+      {/* ── Hero Banner (Pitch Black + Candy Accents) ── */}
+      <section className="relative w-full bg-[#000000] text-white pt-32 pb-24 px-4 md:px-8 overflow-hidden border-b border-white/10">
+        {/* Subtle grid */}
         <div 
-          className="absolute inset-0 opacity-15 pointer-events-none"
+          className="absolute inset-0 pointer-events-none opacity-15"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: "60px 60px"
+            backgroundSize: "48px 48px"
           }}
         />
-
-        {/* Ambient Gradient Glow */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#ccff00] rounded-full blur-[140px] opacity-25 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10 space-y-8">
           <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 pt-4">
             <div className="space-y-4 max-w-3xl">
-              {/* Badges */}
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00] text-black font-black text-xs uppercase tracking-wider shadow-md">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ffe600] text-black font-black text-xs uppercase tracking-wider shadow-md">
                   <Sparkles className="w-3.5 h-3.5" /> Department Faculty & Mentors
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 text-white font-mono text-xs font-semibold">
-                  <Award className="w-3.5 h-3.5 text-[#ccff00]" /> Ph.D. & Masters Mentorship
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white font-mono text-xs font-semibold">
+                  <Award className="w-3.5 h-3.5 text-[#00f5a0]" /> Ph.D. & Masters Mentorship
                 </span>
               </div>
 
-              {/* Title */}
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-none uppercase">
-                FACULTY <span className="text-[#ccff00]">DIRECTORY</span>
-              </h1>
-
-              <div className="w-32 py-1">
-                <DoodleSquiggleWave className="w-full h-4 text-[#ccff00]" />
+              <div className="flex items-center gap-3">
+                <DoodleHashtag className="w-12 sm:w-16 h-auto -mt-3" color="#ffe600" />
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-none font-sans">
+                  FACULTY DIRECTORY
+                </h1>
               </div>
 
-              <p className="text-lg md:text-xl text-white/90 font-medium leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-2xl">
                 Distinguished researchers, machine learning practitioners, and academic mentors guiding students through theoretical depth and breakthrough AI engineering.
               </p>
             </div>
 
-            {/* Floating Stamp Badge */}
             <div className="hidden lg:block shrink-0">
               <CircularStampBadge text="• FACULTY DIRECTORY • RESEARCH & LABS • ACPCE " size={120} />
             </div>
           </div>
         </div>
-
-        {/* Bottom Shelf Curve */}
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-[#f8fafc] rounded-t-[32px]" />
       </section>
 
-      {/* Main Faculty Grid */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-10 space-y-12">
+      {/* ── Main Faculty Grid ── */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12 space-y-12">
         
         {/* Quick Stats Pill Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-900/10 shadow-sm">
-            <div className="text-xs font-mono font-bold text-slate-500 uppercase">Faculty Ratio</div>
-            <div className="text-2xl md:text-3xl font-black text-[#0038ff] mt-1">1 : 15</div>
+          <div className="bg-white/[0.04] p-6 rounded-2xl border border-white/10 shadow-sm backdrop-blur-md">
+            <div className="text-xs font-mono font-bold text-white/50 uppercase">Faculty Ratio</div>
+            <div className="text-2xl md:text-3xl font-black text-[#0055ff] mt-1">1 : 15</div>
           </div>
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-900/10 shadow-sm">
-            <div className="text-xs font-mono font-bold text-slate-500 uppercase">Active Research</div>
-            <div className="text-2xl md:text-3xl font-black text-slate-900 mt-1">20+ Papers</div>
+          <div className="bg-white/[0.04] p-6 rounded-2xl border border-white/10 shadow-sm backdrop-blur-md">
+            <div className="text-xs font-mono font-bold text-white/50 uppercase">Active Research</div>
+            <div className="text-2xl md:text-3xl font-black text-[#ffe600] mt-1">20+ Papers</div>
           </div>
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-900/10 shadow-sm">
-            <div className="text-xs font-mono font-bold text-slate-500 uppercase">Dedicated Labs</div>
-            <div className="text-2xl md:text-3xl font-black text-[#0038ff] mt-1">4 High-End Labs</div>
+          <div className="bg-white/[0.04] p-6 rounded-2xl border border-white/10 shadow-sm backdrop-blur-md">
+            <div className="text-xs font-mono font-bold text-white/50 uppercase">Dedicated Labs</div>
+            <div className="text-2xl md:text-3xl font-black text-[#00f5a0] mt-1">4 High-End Labs</div>
           </div>
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-900/10 shadow-sm">
-            <div className="text-xs font-mono font-bold text-slate-500 uppercase">Patents & Grants</div>
-            <div className="text-2xl md:text-3xl font-black text-emerald-600 mt-1">6 Filed</div>
+          <div className="bg-white/[0.04] p-6 rounded-2xl border border-white/10 shadow-sm backdrop-blur-md">
+            <div className="text-xs font-mono font-bold text-white/50 uppercase">Patents & Grants</div>
+            <div className="text-2xl md:text-3xl font-black text-[#ff3b30] mt-1">6 Filed</div>
           </div>
         </div>
 
@@ -141,11 +131,11 @@ export default function StaffPage() {
             return (
               <div 
                 key={m.id} 
-                className="group bg-white rounded-3xl border-2 border-slate-900/10 hover:border-[#0038ff] p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6"
+                className="group bg-white/[0.04] hover:bg-white/[0.07] rounded-3xl border border-white/10 hover:border-white/20 p-6 shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 backdrop-blur-md"
               >
                 <div className="space-y-4">
                   {/* Faculty Photo */}
-                  <div className="relative w-full aspect-square bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+                  <div className="relative w-full aspect-square bg-slate-900 rounded-2xl overflow-hidden border border-white/10">
                     <Image 
                       src={imgSrc} 
                       alt={m.name}
@@ -156,27 +146,27 @@ export default function StaffPage() {
                     />
                   </div>
 
-                  <span className="inline-block font-mono text-[10px] font-bold uppercase tracking-wider bg-[#0038ff]/10 text-[#0038ff] px-3 py-1 rounded-full">
+                  <span className="inline-block font-mono text-[10px] font-bold uppercase tracking-wider bg-[#ffe600] text-black px-3 py-1 rounded-full font-black">
                     {m.id === "st-1" ? "Head of Department" : "Faculty Member"}
                   </span>
 
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight group-hover:text-[#0038ff] transition-colors">
+                  <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-[#ffe600] transition-colors">
                     {m.name}
                   </h3>
 
-                  <div className="text-xs font-mono font-bold text-[#0038ff]">
+                  <div className="text-xs font-mono font-bold text-[#0055ff]">
                     {m.designation}
                   </div>
 
                   {m.qualification && (
-                    <div className="text-xs font-mono text-slate-500 flex items-center gap-1.5 pt-1">
-                      <GraduationCap className="w-4 h-4 text-[#0038ff] shrink-0" />
+                    <div className="text-xs font-mono text-white/60 flex items-center gap-1.5 pt-1">
+                      <GraduationCap className="w-4 h-4 text-[#ffe600] shrink-0" />
                       <span>{m.qualification}</span>
                     </div>
                   )}
 
                   {m.bio && (
-                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3 pt-1">
+                    <p className="text-sm text-white/70 leading-relaxed line-clamp-3 pt-1">
                       {m.bio}
                     </p>
                   )}
@@ -186,7 +176,7 @@ export default function StaffPage() {
                       {m.expertise.map((exp, idx) => (
                         <span 
                           key={idx} 
-                          className="font-mono text-[10px] text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200"
+                          className="font-mono text-[10px] text-white/70 bg-white/5 px-2.5 py-1 rounded-lg border border-white/10"
                         >
                           {exp}
                         </span>
@@ -196,11 +186,11 @@ export default function StaffPage() {
                 </div>
 
                 {/* Bottom Actions */}
-                <div className="pt-4 border-t-2 border-slate-100 flex items-center justify-between gap-3">
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
                   {m.email ? (
                     <a 
                       href={`mailto:${m.email}`} 
-                      className="font-mono text-xs font-bold text-[#0038ff] flex items-center gap-1.5 hover:underline"
+                      className="font-mono text-xs font-bold text-[#0055ff] hover:text-[#ffe600] flex items-center gap-1.5 transition-colors"
                     >
                       <Mail className="w-3.5 h-3.5" />
                       Email
@@ -209,7 +199,7 @@ export default function StaffPage() {
 
                   <Link 
                     href={`/staff/${m.id}`}
-                    className="font-mono text-xs font-bold text-slate-700 hover:text-[#0038ff] flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                    className="font-mono text-xs font-bold text-white hover:text-[#ffe600] flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                   >
                     Profile <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

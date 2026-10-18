@@ -6,8 +6,8 @@ import FaqAndCtaSection from "@/components/FaqAndCtaSection";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#0038ff] text-white selection:bg-[#ccff00] selection:text-black">
-      {/* 1. Master Hero Section (Electric Blue, Neon Lime Doodles, Floating Tilted Glass Cards, Rounded White Shelf) */}
+    <div className="w-full min-h-screen flex flex-col bg-[#000000] text-white selection:bg-[#ffe600] selection:text-black">
+      {/* 1. Master Hero Section (Pitch Black, 3D Candy Spaghetti Tubes, Chalk Doodles, Floating Glass Cards) */}
       <HeroV3Section />
 
       {/* 2. Flagship Fests Bento Grid (Vectors 2026, Kurukshetra, Rhythms) */}

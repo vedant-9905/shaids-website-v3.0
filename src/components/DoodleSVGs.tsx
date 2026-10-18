@@ -269,3 +269,160 @@ export function DoodleSparkle({ className = "", color = "#ccff00", size = 28 }: 
     </svg>
   );
 }
+
+/** Hand-drawn Chalk Desktop PC with keyboard & mouse (from user brand banner) */
+export function DoodleChalkDesktop({ className = "", color = "#ffffff" }: { className?: string; color?: string }) {
+  return (
+    <svg
+      width="140"
+      height="120"
+      viewBox="0 0 140 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(255,255,255,0.3)] ${className}`}
+      aria-hidden
+    >
+      {/* Monitor frame */}
+      <rect
+        x="15"
+        y="10"
+        width="82"
+        height="56"
+        rx="5"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Inner screen bezel */}
+      <rect
+        x="22"
+        y="16"
+        width="68"
+        height="44"
+        rx="2"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Screen glare lines */}
+      <line x1="38" y1="22" x2="28" y2="48" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="50" y1="22" x2="40" y2="48" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="62" y1="22" x2="52" y2="48" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      {/* Monitor stand neck */}
+      <path d="M52 66 L50 78 M60 66 L62 78" stroke={color} strokeWidth="3" strokeLinecap="round" />
+      {/* Monitor stand base */}
+      <path d="M38 78 C48 76 64 76 74 78" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+      {/* Keyboard */}
+      <path
+        d="M24 88 L88 84 L84 104 L18 108 Z"
+        stroke={color}
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+      {/* Keyboard key grid */}
+      <line x1="26" y1="94" x2="85" y2="90" stroke={color} strokeWidth="1.8" />
+      <line x1="23" y1="100" x2="82" y2="96" stroke={color} strokeWidth="1.8" />
+      <line x1="36" y1="92" x2="33" y2="105" stroke={color} strokeWidth="1.8" />
+      <line x1="48" y1="91" x2="45" y2="104" stroke={color} strokeWidth="1.8" />
+      <line x1="60" y1="90" x2="57" y2="103" stroke={color} strokeWidth="1.8" />
+      <line x1="72" y1="89" x2="69" y2="102" stroke={color} strokeWidth="1.8" />
+      {/* Mousepad */}
+      <ellipse cx="108" cy="98" rx="18" ry="12" stroke={color} strokeWidth="2" />
+      {/* Mouse */}
+      <ellipse cx="108" cy="97" rx="8" ry="6" stroke={color} strokeWidth="2.5" />
+      <line x1="108" y1="91" x2="108" y2="96" stroke={color} strokeWidth="2" />
+    </svg>
+  );
+}
+
+/** Hand-drawn Chalk Laptop with screen glare (from user brand banner) */
+export function DoodleChalkLaptop({ className = "", color = "#ffffff" }: { className?: string; color?: string }) {
+  return (
+    <svg
+      width="130"
+      height="105"
+      viewBox="0 0 130 105"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(255,255,255,0.3)] ${className}`}
+      aria-hidden
+    >
+      {/* Laptop screen lid (tilted perspective) */}
+      <path
+        d="M32 18 L94 28 L84 68 L24 58 Z"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Inner display bezel */}
+      <path
+        d="M36 24 L88 32 L80 63 L29 55 Z"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Screen diagonal glare lines */}
+      <line x1="52" y1="28" x2="44" y2="52" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="64" y1="30" x2="56" y2="54" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="76" y1="32" x2="68" y2="56" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      {/* Laptop base deck */}
+      <path
+        d="M24 58 L84 68 L106 88 L14 76 Z"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Keyboard recessed area */}
+      <path
+        d="M28 62 L82 70 L94 80 L22 72 Z"
+        stroke={color}
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      {/* Trackpad */}
+      <path
+        d="M44 76 L64 78 L60 84 L40 82 Z"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/** Hand-drawn Chalk Code Brackets `{ }` */
+export function DoodleChalkCodeBrackets({ className = "", color = "#ffffff" }: { className?: string; color?: string }) {
+  return (
+    <svg
+      width="80"
+      height="60"
+      viewBox="0 0 80 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`select-none pointer-events-none ${className}`}
+      aria-hidden
+    >
+      <path
+        d="M26 12 C18 12 16 18 16 24 C16 28 10 30 6 30 C10 30 16 32 16 36 C16 42 18 48 26 48"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M54 12 C62 12 64 18 64 24 C64 28 70 30 74 30 C70 30 64 32 64 36 C64 42 62 48 54 48"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <line x1="44" y1="16" x2="36" y2="44" stroke={color} strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+

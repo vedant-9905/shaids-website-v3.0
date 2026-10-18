@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Plus, Minus, ArrowRight, Mail } from "lucide-react";
-import { DoodleSparkle } from "./DoodleSVGs";
+import { DoodleSparkle, DoodleSquiggleWave } from "./DoodleSVGs";
 
 const FAQS = [
   {
@@ -32,22 +32,35 @@ export default function FaqAndCtaSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#f8fafd] text-black px-6 sm:px-10 md:px-16 py-20 md:py-28 overflow-hidden border-t border-black/5">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="relative w-full bg-[#08080c] text-white px-6 sm:px-10 md:px-16 py-20 md:py-28 overflow-hidden border-t border-white/10">
+      
+      {/* Background Subtle Tech Grid */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "48px 48px"
+        }}
+      />
+
+      <div className="max-w-[1280px] mx-auto relative z-10">
         
         {/* ── FAQ Section ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 md:mb-28 items-start">
           
           <div className="lg:col-span-5">
-            <span className="px-3 py-1 bg-[#0038ff]/10 text-[#0038ff] font-mono text-[10px] font-black uppercase rounded-full tracking-wider">
+            <span className="px-3 py-1 bg-white/10 text-[#ffe600] font-mono text-[10px] font-black uppercase rounded-full tracking-wider border border-white/15">
               FREQUENTLY ASKED
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mt-3 font-sans leading-tight">
               GOT QUESTIONS?
               <br />
-              <span className="text-[#0038ff]">WE GOT ANSWERS.</span>
+              <span className="text-[#0055ff]">WE GOT ANSWERS.</span>
             </h2>
-            <p className="text-black/60 text-sm md:text-base font-medium mt-4 leading-relaxed max-w-[420px]">
+            <p className="text-white/70 text-sm md:text-base font-medium mt-4 leading-relaxed max-w-[420px]">
               Everything you need to know about departmental admissions, student council recruitment, and participating in annual fests.
             </p>
           </div>
@@ -58,22 +71,22 @@ export default function FaqAndCtaSection() {
               return (
                 <div
                   key={idx}
-                  onClick={() => toggleFaq(idx)}
-                  className="bg-white rounded-2xl md:rounded-3xl p-6 border border-black/8 hover:border-black/20 transition-all cursor-pointer shadow-sm"
+                  className="bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 rounded-2xl md:rounded-3xl p-6 transition-all duration-300"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-bold text-base md:text-lg text-black font-sans pr-2">
-                      {faq.q}
-                    </h3>
-                    <div className="w-8 h-8 rounded-full bg-[#f0f4f9] flex items-center justify-center shrink-0 text-black">
+                  <button
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full flex items-center justify-between gap-4 text-left font-sans font-bold text-base sm:text-lg text-white"
+                  >
+                    <span>{faq.q}</span>
+                    <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-[#ffe600]">
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                    </div>
-                  </div>
+                    </span>
+                  </button>
 
                   {isOpen && (
-                    <p className="text-sm md:text-base text-black/65 font-medium leading-relaxed mt-4 pt-4 border-t border-black/8 animate-in fade-in duration-200">
+                    <div className="mt-4 pt-4 border-t border-white/10 text-white/70 text-sm leading-relaxed font-sans">
                       {faq.a}
-                    </p>
+                    </div>
                   )}
                 </div>
               );
@@ -82,40 +95,36 @@ export default function FaqAndCtaSection() {
 
         </div>
 
-        {/* ── Big Call To Action Card (Electric Blue + Lime) ── */}
-        <div className="bg-[#0038ff] text-white rounded-3xl md:rounded-[48px] p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Subtle grid */}
-          <div className="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:36px_36px]" />
-
-          <div className="relative z-10 max-w-[620px]">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#ccff00] text-black font-mono text-[10px] font-black uppercase rounded-full tracking-wider mb-4">
-              <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-              JOIN THE AI REVOLUTION
-            </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-none font-sans">
-              READY TO CODE,
-              <br />
-              <span className="text-[#ccff00]">BUILD & LEAD?</span>
-            </h2>
-            <p className="text-white/80 text-sm md:text-base font-medium mt-4 leading-relaxed">
-              Connect with department coordinators, explore active research clusters, or register for the upcoming Vectors Hackathon session.
+        {/* ── Giant Bottom Call-to-Action Banner ── */}
+        <div className="relative w-full rounded-3xl md:rounded-[48px] bg-gradient-to-r from-[#0022aa] via-[#051133] to-[#120524] p-8 sm:p-12 md:p-16 border border-white/20 shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          
+          <div className="relative z-10 max-w-xl text-center md:text-left space-y-3">
+            <span className="px-3 py-1 bg-[#ffe600] text-black font-mono text-[10px] font-black uppercase rounded-full tracking-wider inline-block">
+              SESSION 2026-27 ACTIVE
+            </span>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight leading-none font-sans">
+              BE A PART OF THE NEXT WAVE IN AI
+            </h3>
+            <p className="text-white/80 text-sm sm:text-base font-medium leading-relaxed">
+              Connect with fellow student innovators, submit your capstone research, or compete in our flagship hackathons.
             </p>
           </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 shrink-0">
             <Link
               href="/events"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#ccff00] hover:bg-[#b8e600] text-black font-mono text-xs font-black uppercase tracking-wider text-center transition-all shadow-lg hover:scale-105"
+              className="px-8 py-4 rounded-full bg-[#ffe600] hover:bg-[#ffd600] text-black font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg hover:scale-105 transition-all flex items-center gap-2"
             >
-              EXPLORE EVENTS
+              Explore Fests & Events <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/about"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/25 font-mono text-xs font-bold uppercase tracking-wider text-center transition-all"
+              href="/team"
+              className="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider backdrop-blur-md transition-all"
             >
-              ABOUT DEPARTMENT
+              Contact Committee
             </Link>
           </div>
+
         </div>
 
       </div>

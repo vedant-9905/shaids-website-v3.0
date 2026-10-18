@@ -36,7 +36,7 @@ export default function Header() {
     <>
       <header className={`fixed top-0 left-0 right-0 z-[999] px-4 sm:px-8 flex items-center justify-between transition-all duration-300 pointer-events-none ${
         isScrolled
-          ? "bg-[#0022cc]/95 backdrop-blur-xl border-b border-white/10 shadow-xl py-3"
+          ? "bg-black/90 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3"
           : "py-4 sm:py-5"
       }`}>
         

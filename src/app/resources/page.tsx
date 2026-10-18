@@ -1,27 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, ExternalLink, Search, FileText, Code2, Map } from "lucide-react";
+import Link from "next/link";
+import { 
+  Search, 
+  Download, 
+  ExternalLink, 
+  BookOpen, 
+  FileText, 
+  Code, 
+  Compass, 
+  Sparkles,
+  Layers,
+  Tag
+} from "lucide-react";
 import { useContent } from "@/context/content-context";
-import { DoodleHashtag } from "@/components/DoodleSVGs";
+import { DoodleHashtag, DoodleCurvedArrowDown, DoodleSparkle } from "@/components/DoodleSVGs";
 
 const DEFAULT_RESOURCES = [
   {
     id: "res-1",
-    title: "Deep Learning & Neural Networks Lab Manual",
-    description: "Official PyTorch and TensorFlow lab exercises covering CNNs, RNNs, and Transformer architectures.",
+    title: "Deep Learning & Neural Network Lab Manual",
+    description: "Complete laboratory code experiments, PyTorch implementations, CNN architectures, and benchmark exercises.",
     category: "Lab Manuals",
     link: "https://github.com",
     author: "Prof. Shilpali Bansu",
-    tags: ["PyTorch", "TensorFlow", "Deep Learning"]
+    tags: ["PyTorch", "Deep Learning", "Lab Work"]
   },
   {
     id: "res-2",
-    title: "Full-Stack AI Engineer Roadmap 2026",
-    description: "Step-by-step learning path from Python & SQL fundamentals to MLOps, LLM fine-tuning, and vector databases.",
+    title: "End-to-End Generative AI & LLM Roadmap",
+    description: "Curated learning trajectory from linear algebra and transformer mathematics to fine-tuning Llama-3 and LangChain agents.",
     category: "Roadmaps",
-    link: "https://roadmap.sh/ai-data-scientist",
-    author: "SHAIDS Core Team",
+    link: "https://github.com",
+    author: "SHAIDS Technical Cell",
     tags: ["MLOps", "LLMs", "Roadmap"]
   },
   {
@@ -84,110 +96,134 @@ export default function ResourcesPage() {
   });
 
   return (
-    <div className="w-full min-h-screen bg-[#f8fafd] text-black">
+    <div className="w-full min-h-screen bg-[#050508] text-white">
       
-      {/* ── Hero Banner (Electric Blue + Doodle Hashtag) ── */}
-      <section className="relative w-full bg-[#0038ff] text-white pt-32 md:pt-40 pb-16 md:pb-24 px-6 sm:px-10 md:px-16 overflow-hidden">
+      {/* ── Hero Banner (Pitch Black + Candy Doodle Accents) ── */}
+      <section className="relative w-full bg-[#000000] text-white pt-32 md:pt-40 pb-16 md:pb-24 px-6 sm:px-10 md:px-16 overflow-hidden border-b border-white/10">
         {/* Subtle grid */}
-        <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-15"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "48px 48px"
+          }}
+        />
 
-        <div className="relative max-w-[1280px] mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/15 backdrop-blur-md border border-white/25 rounded-full text-white font-mono text-xs font-bold uppercase tracking-wider mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
+        <div className="relative max-w-[1280px] mx-auto z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white font-mono text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#00f5a0] animate-pulse" />
             STUDENT REPOSITORY & ACADEMIC VAULT
           </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
               <div className="flex items-center gap-3">
-                <DoodleHashtag className="w-12 sm:w-16 h-auto -mt-3" />
+                <DoodleHashtag className="w-12 sm:w-16 h-auto -mt-3" color="#ffe600" />
                 <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-none font-sans">
-                  STUDENT RESOURCES
+                  RESOURCES HUB
                 </h1>
               </div>
-              <p className="text-white/80 max-w-2xl text-base sm:text-lg font-medium leading-relaxed mt-4">
-                Access verified lab assignment manuals, roadmap blueprints, Mumbai University syllabus schemes, and open-source codebases.
-              </p>
-            </div>
 
-            {/* Search Input Pill */}
-            <div className="relative w-full md:w-80">
-              <Search className="w-4 h-4 text-white/50 absolute left-4 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search resources, topics, tags..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 rounded-full bg-white/12 backdrop-blur-xl border border-white/25 text-white placeholder:text-white/50 text-xs font-mono focus:outline-none focus:border-[#ccff00] transition-colors"
-              />
+              <p className="text-white/80 max-w-2xl text-base sm:text-lg font-medium leading-relaxed mt-4">
+                Curated lecture notes, laboratory assignment manuals, project code repos, and Mumbai University AI & DS schemes.
+              </p>
             </div>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2 pt-6 border-t border-white/15 font-mono text-xs">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
-                  selectedCategory === cat
-                    ? "bg-[#ccff00] text-black shadow-md"
-                    : "bg-white/10 hover:bg-white/20 text-white border border-white/15"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Search Bar & Category Filters */}
+          <div className="flex flex-col md:flex-row gap-4 pt-6 border-t border-white/10">
+            {/* Search Input */}
+            <div className="relative flex-1 max-w-xl">
+              <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-white/50" />
+              <input
+                type="text"
+                placeholder="Search notes, algorithms, PyTorch, lab manuals..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-white/[0.08] border border-white/20 focus:border-[#ffe600] rounded-full pl-12 pr-6 py-3.5 text-white placeholder-white/40 font-mono text-xs focus:outline-none transition-colors"
+              />
+            </div>
+
+            {/* Category Pills */}
+            <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+              {CATEGORIES.map((cat) => {
+                const active = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-4 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all duration-200 border ${
+                      active
+                        ? "bg-[#ffe600] border-[#ffe600] text-black shadow-md font-black"
+                        : "bg-white/[0.04] border-white/15 text-white/80 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Resources Bento Grid ── */}
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 md:px-16 py-16 md:py-24">
+      {/* ── Resources Grid ── */}
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 md:px-16 py-16 md:py-24 space-y-12">
         
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div>
-            <span className="font-mono text-xs font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
-              FILTERED REPOSITORIES
+            <span className="font-mono text-xs font-bold tracking-widest text-[#00f5a0] uppercase bg-[#00f5a0]/10 border border-[#00f5a0]/20 px-3 py-1 rounded-full">
+              CURATED DIRECTORY
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-3 font-sans">
-              AVAILABLE MATERIALS ({filteredResources.length})
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight mt-3 font-sans text-white">
+              Available Resources ({filteredResources.length})
             </h2>
           </div>
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="font-mono text-xs text-[#ffe600] hover:underline"
+            >
+              Clear Search
+            </button>
+          )}
         </div>
 
         {filteredResources.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredResources.map((res: any) => (
+            {filteredResources.map((res) => (
               <div
                 key={res.id}
-                className="bg-white rounded-3xl p-6 sm:p-7 border border-black/8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+                className="bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 hover:border-white/20 rounded-3xl p-7 shadow-xl transition-all flex flex-col justify-between group backdrop-blur-md"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="px-3 py-1 bg-[#f0f4f9] text-[#0038ff] font-mono text-[10px] font-black uppercase rounded-full">
+                    <span className="px-3 py-1 bg-[#ffe600] text-black font-mono text-[10px] font-black uppercase rounded-full">
                       {res.category}
                     </span>
-                    <span className="font-mono text-xs text-black/40">
-                      {res.author}
+                    <span className="font-mono text-xs text-white/50">
+                      By {res.author}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-black uppercase tracking-tight text-black font-sans leading-tight">
+                  <h3 className="text-xl font-black uppercase tracking-tight text-white font-sans leading-tight">
                     {res.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-black/65 font-medium leading-relaxed mt-2.5">
+                  <p className="text-xs sm:text-sm text-white/70 font-medium leading-relaxed mt-3">
                     {res.description}
                   </p>
 
                   {/* Tags */}
                   {res.tags && res.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mt-4">
-                      {res.tags.map((tag: string) => (
+                      {res.tags.map((tag: string, idx: number) => (
                         <span
-                          key={tag}
-                          className="px-2.5 py-0.5 bg-[#f6f8fb] text-black/60 rounded-md font-mono text-[10px] font-bold"
+                          key={idx}
+                          className="font-mono text-[10px] text-white/60 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-lg"
                         >
                           #{tag}
                         </span>
@@ -196,15 +232,15 @@ export default function ResourcesPage() {
                   )}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-black/8 flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-black/40 uppercase">
-                    OPEN ACCESS
+                <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
+                  <span className="font-mono text-[11px] font-bold text-white/50 uppercase">
+                    ACADEMIC ARCHIVE
                   </span>
                   <a
                     href={res.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-[#0038ff] hover:bg-[#0029db] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 group-hover:scale-105"
+                    className="px-4 py-2 rounded-full bg-[#0055ff] hover:bg-[#0044cc] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-md"
                   >
                     <span>ACCESS</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -214,15 +250,18 @@ export default function ResourcesPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl p-12 border border-black/8 text-center">
-            <p className="text-black/50 font-mono text-sm uppercase font-bold">
-              No learning resources found matching your search.
-            </p>
+          <div className="p-16 text-center rounded-3xl border border-white/10 bg-white/[0.02] text-white/60 font-mono text-xs space-y-3">
+            <p>No resources found matching "{searchQuery}" under "{selectedCategory}".</p>
+            <button
+              onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}
+              className="px-4 py-2 bg-white/10 text-white rounded-full font-bold hover:bg-white/20"
+            >
+              Reset Filters
+            </button>
           </div>
         )}
 
       </div>
-
     </div>
   );
 }
