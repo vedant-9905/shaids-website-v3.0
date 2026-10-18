@@ -110,4 +110,4 @@ Run in your shell:
 ```bash
 npm run dev
 ```
-Open **`http://localhost:3001`** in your browser.
+Open **`http://localhost:3500`** in your browser.
