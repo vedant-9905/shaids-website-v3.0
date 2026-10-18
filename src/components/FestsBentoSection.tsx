@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Sparkles, Trophy, Music, ArrowUpRight, Calendar, Users } from "lucide-react";
 import { DoodleSquiggleWave, DoodleSparkle } from "./DoodleSVGs";
+import { StandaloneTubularSquiggle } from "./TubularSquiggles";
 
 export default function FestsBentoSection() {
   return (
@@ -55,9 +56,9 @@ export default function FestsBentoSection() {
             {/* Background grid */}
             <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-            {/* Hand-drawn squiggle accent */}
-            <div className="absolute -right-6 top-6 opacity-80 pointer-events-none">
-              <DoodleSquiggleWave color="#ffe600" />
+            {/* Hand-coded 3D Tubular Squiggle Accent */}
+            <div className="absolute -right-4 top-6 opacity-85 pointer-events-none hidden sm:block">
+              <StandaloneTubularSquiggle color="yellow" size={140} />
             </div>
 
             <div className="relative z-10">
@@ -112,6 +113,11 @@ export default function FestsBentoSection() {
             
             {/* ── CARD 2: KURUKSHETRA (Sports & Turf) ── */}
             <div className="bg-[#12131a] text-white rounded-3xl md:rounded-[36px] p-7 md:p-9 flex flex-col justify-between group shadow-xl relative overflow-hidden flex-1 border border-white/10 hover:border-[#ff3b30] transition-colors">
+              {/* Hand-coded 3D Tubular Squiggle Accent */}
+              <div className="absolute -right-4 -bottom-4 opacity-75 pointer-events-none hidden sm:block">
+                <StandaloneTubularSquiggle color="red" size={110} />
+              </div>
+
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <span className="px-3 py-0.5 bg-[#ff3b30] text-white font-mono text-[10px] font-black uppercase rounded-full tracking-wider">
@@ -144,6 +150,11 @@ export default function FestsBentoSection() {
 
             {/* ── CARD 3: RHYTHMS (Cultural Symposium) ── */}
             <div className="bg-[#181126] text-white rounded-3xl md:rounded-[36px] p-7 md:p-9 flex flex-col justify-between group shadow-xl relative overflow-hidden flex-1 border border-white/10 hover:border-[#af52de] transition-colors">
+              {/* Hand-coded 3D Tubular Squiggle Accent */}
+              <div className="absolute -right-4 -bottom-4 opacity-75 pointer-events-none hidden sm:block">
+                <StandaloneTubularSquiggle color="pink" size={110} />
+              </div>
+
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <span className="px-3 py-0.5 bg-[#af52de] text-white font-mono text-[10px] font-black uppercase rounded-full tracking-wider">
