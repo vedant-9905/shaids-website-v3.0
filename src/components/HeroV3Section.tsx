@@ -68,15 +68,16 @@ export default function HeroV3Section() {
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[1180px] aspect-[1024/455] my-2 cursor-pointer group"
+            className="relative w-full max-w-[1240px] aspect-[4096/2160] my-2 cursor-pointer group"
           >
             <Image
-              src="/shaids-hero-banner.png"
-              alt="SHAIDS 2026-27 Official Department Graphic"
+              src="/SHAIDS.png"
+              alt="SHAIDS 2026-27 Official 4K Department Graphic"
               fill
               priority
-              className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.85)] filter contrast-[1.05]"
-              sizes="(max-width: 1280px) 100vw, 1180px"
+              unoptimized
+              className="object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.9)] filter contrast-[1.05]"
+              sizes="(max-width: 1280px) 100vw, 1240px"
             />
           </motion.div>
 
