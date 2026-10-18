@@ -16,6 +16,8 @@ export default function Header() {
   const [isLightMode, setIsLightMode] = useState(false);
   const pathname = usePathname();
 
+  // v3.0: Default is always dark (black). Only switch light on explicit data-theme="light" sections.
+
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
@@ -54,8 +56,8 @@ export default function Header() {
         }
       }
 
-      // 3. Default to light mode when over light background sections
-      setIsLightMode(true);
+      // 3. Default to DARK for v3.0 — pure black site
+      setIsLightMode(false);
     };
 
     const onScrollOrResize = () => {
@@ -107,7 +109,7 @@ export default function Header() {
             alt="SHAIDS Emblem"
             width={32}
             height={32}
-            className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(14,118,255,0.4)]"
+            className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(230,48,34,0.35)]"
             priority
           />
         </div>
@@ -123,7 +125,7 @@ export default function Header() {
           >
             SHAIDS
           </span>
-          <span className="text-[9px] font-mono tracking-widest text-[#0e76ff] uppercase font-bold">
+          <span className="text-[9px] font-mono tracking-widest text-[#e63022] uppercase font-bold">
             ACPCE AI & DS
           </span>
         </div>
@@ -142,11 +144,11 @@ export default function Header() {
               <div className={`content btn-secondary ${themeClass}`}>
                 <div className="btn-content">
                   <span className="flex items-center justify-center gap-1.5">
-                    {active && <span className="w-1.5 h-1.5 bg-[#0e76ff] rounded-[1px] inline-block shrink-0" />}
+                    {active && <span className="w-1.5 h-1.5 bg-[#e63022] inline-block shrink-0" />}
                     <span>{item.name}</span>
                   </span>
                   <span className="flex items-center justify-center gap-1.5">
-                    {active && <span className="w-1.5 h-1.5 bg-[#0e76ff] rounded-[1px] inline-block shrink-0" />}
+                    {active && <span className="w-1.5 h-1.5 bg-[#e63022] inline-block shrink-0" />}
                     <span>{item.name}</span>
                   </span>
                 </div>
