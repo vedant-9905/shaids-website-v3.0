@@ -1,24 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import TextReveal from "@/components/TextReveal";
 import { 
   Building2, 
-  Target, 
-  Compass, 
   Brain, 
   Database, 
   Cpu, 
   Globe, 
-  BookOpen, 
-  ShieldCheck, 
-  Quote, 
-  UserCheck, 
   Shield, 
   Award,
-  GraduationCap
+  GraduationCap,
+  Quote,
+  Target,
+  Compass,
+  CheckCircle2
 } from "lucide-react";
 import { useContent } from "@/context/content-context";
+import { DoodleHashtag, DoodleCurvedArrowDown, DoodleSparkle, DoodleUnderline } from "@/components/DoodleSVGs";
 
 export default function AboutPage() {
   const { toppers, nptel } = useContent();
@@ -80,308 +78,390 @@ export default function AboutPage() {
 
   const leadership = [
     {
-      title: "Principal's Message",
+      title: "Principal's Address",
       name: "Dr. Sawata R. Deore",
       role: "Principal, ACPCE (BE, ME, PhD Tech.)",
-      badge: "INSTITUTIONAL LEADERSHIP",
+      badge: "INSTITUTIONAL VISIONARY",
       icon: Shield,
       quote: "Our Main Aim is to Create, Nurture and Shape Technical Professionals with Skills to face the ever changing social, economical and technical landscape of our country. We provide high-end undergraduate Education and Research Opportunities in new Frontiers of Engineering and Technology."
     },
     {
-      title: "Head of Department (HoD) Message",
+      title: "HoD's Address",
       name: "Mrs. Shilpali Bansu",
       role: "Head of Department & Assistant Professor, AI & DS",
       badge: "ACADEMIC LEADERSHIP",
-      icon: UserCheck,
+      icon: Award,
       quote: "Welcome to the Department of Artificial Intelligence and Data Science at A. C. Patil College of Engineering. Our department is dedicated to nurturing innovative thinkers, skilled data engineers, and ethical AI professionals through cutting-edge laboratory training and industry collaborations."
     }
   ];
 
   return (
-    <div className="w-full min-h-screen bg-[#02040a] text-white pt-32 pb-24 px-4 md:px-8" data-theme="dark">
-      <div className="layout-block max-w-7xl mx-auto">
-        
-        {/* Header Block */}
-        <div className="mb-12 border-b border-[#262626] pb-10">
-          <div className="mono-small text-[#0e76ff] font-bold mb-3 flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#0e76ff] animate-ping" />
-            DEPARTMENT OF AI & DATA SCIENCE • ACPCE NAVI MUMBAI
-          </div>
-          <TextReveal
-            text="Academic & Institutional Overview"
-            as="h1"
-            className="text-4xl md:text-7xl font-bold tracking-tighter leading-none mb-6 font-sans"
-          />
-          <p className="body-large text-[#a3a3a3] max-w-3xl font-medium leading-relaxed">
-            Established in 2021 with an expanded intake of 120 students, the Department of Artificial Intelligence & Data Science at A. C. Patil College of Engineering delivers industry-aligned engineering education, state-of-the-art GPU labs, and research opportunities.
-          </p>
+    <div className="w-full min-h-screen bg-[#f8fafd] text-black">
+      
+      {/* ── Hero Banner (Electric Blue + Neon Lime Hashtag) ── */}
+      <section className="relative w-full bg-[#0038ff] text-white pt-32 md:pt-40 pb-16 md:pb-24 px-6 sm:px-10 md:px-16 overflow-hidden">
+        {/* Subtle grid */}
+        <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-          {/* Navigation Sub-Tabs */}
-          <div className="flex gap-4 mt-8 pt-4 border-t border-white/10 font-mono text-xs">
-            <button
-              onClick={() => setActiveTab("overview")}
-              className={`px-5 py-2.5 transition-colors border ${activeTab === "overview" ? "bg-[#0e76ff] border-[#0e76ff] text-white font-bold" : "bg-[#080d1a] border-[#262626] text-[#a3a3a3] hover:text-white"}`}
-            >
-              DEPARTMENT OVERVIEW
-            </button>
-            <button
-              onClick={() => setActiveTab("leadership")}
-              className={`px-5 py-2.5 transition-colors border ${activeTab === "leadership" ? "bg-[#0e76ff] border-[#0e76ff] text-white font-bold" : "bg-[#080d1a] border-[#262626] text-[#a3a3a3] hover:text-white"}`}
-            >
-              LEADERSHIP MESSAGES
-            </button>
-            <button
-              onClick={() => setActiveTab("academics")}
-              className={`px-5 py-2.5 transition-colors border ${activeTab === "academics" ? "bg-[#0e76ff] border-[#0e76ff] text-white font-bold" : "bg-[#080d1a] border-[#262626] text-[#a3a3a3] hover:text-white"}`}
-            >
-              ACADEMIC MATRIX & TOPPERS
-            </button>
+        <div className="relative max-w-[1280px] mx-auto">
+          {/* Top Pill Tag */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/15 backdrop-blur-md border border-white/25 rounded-full text-white font-mono text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
+            ACPCE NAVI MUMBAI · ESTD 2021
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3">
+                <DoodleHashtag className="w-12 sm:w-16 h-auto -mt-3" />
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-none font-sans">
+                  ABOUT SHAIDS
+                </h1>
+              </div>
+              <p className="text-white/80 max-w-2xl text-base sm:text-lg font-medium leading-relaxed mt-4">
+                Pioneering intelligence, high-performance data systems, and ethical engineering at A. C. Patil College of Engineering with 120 annual intake.
+              </p>
+            </div>
+
+            {/* Sub-navigation Capsule Tabs */}
+            <div className="flex flex-wrap gap-2 p-1.5 bg-white/12 backdrop-blur-xl border border-white/20 rounded-full font-mono text-xs">
+              <button
+                onClick={() => setActiveTab("overview")}
+                className={`px-4 sm:px-5 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
+                  activeTab === "overview"
+                    ? "bg-[#ccff00] text-black shadow-md"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                OVERVIEW
+              </button>
+              <button
+                onClick={() => setActiveTab("leadership")}
+                className={`px-4 sm:px-5 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
+                  activeTab === "leadership"
+                    ? "bg-[#ccff00] text-black shadow-md"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                LEADERSHIP
+              </button>
+              <button
+                onClick={() => setActiveTab("academics")}
+                className={`px-4 sm:px-5 py-2 rounded-full transition-all duration-200 font-bold uppercase tracking-wider ${
+                  activeTab === "academics"
+                    ? "bg-[#ccff00] text-black shadow-md"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                TOPPERS & NPTEL
+              </button>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* TAB 1: OVERVIEW */}
+      {/* ── Content Body Container ── */}
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 md:px-16 py-16 md:py-24">
+        
+        {/* ── TAB 1: OVERVIEW ── */}
         {activeTab === "overview" && (
           <div className="space-y-16">
             
-            {/* Intro Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 card-frosted p-8 border border-white/10 has-pin has-pin--light">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-[#0e76ff]/20 text-[#0e76ff] border border-[#0e76ff]/30">
-                    <Building2 className="w-5 h-5" />
-                  </div>
-                  <span className="mono-small text-[#0e76ff] font-bold">ESTABLISHED 2021</span>
-                </div>
-                <h2 className="text-3xl font-bold font-sans mb-4">Empowering Engineers for Tomorrow</h2>
-                <p className="text-[#a3a3a3] text-sm leading-relaxed mb-4">
-                  The Department of Artificial Intelligence & Data Science was established in 2021 at A. C. Patil College of Engineering, Navi Mumbai. Driven by rapid advancements in machine learning, neural networks, and big data infrastructure, the department expanded its intake capacity to 120 seats in A.Y. 2024–25.
-                </p>
-                <p className="text-[#a3a3a3] text-sm leading-relaxed">
-                  Our curriculum combines foundational computer science principles with specialized coursework in Deep Learning, Natural Language Processing, Computer Vision, MLOps, and Data Analytics, supported by modern computational laboratories and experienced faculty.
-                </p>
-              </div>
-
-              {/* Statistics Card */}
-              <div className="card-frosted p-8 border border-white/10 has-pin has-pin--light flex flex-col justify-between">
-                <div>
-                  <span className="mono-small text-[#0e76ff] font-bold block mb-4">DEPARTMENT STATS</span>
-                  <div className="space-y-6">
-                    <div>
-                      <div className="text-4xl font-bold font-sans text-white">120</div>
-                      <div className="text-xs font-mono text-[#a3a3a3] uppercase mt-1">Annual Student Intake</div>
-                    </div>
-                    <div className="border-t border-[#262626] pt-4">
-                      <div className="text-4xl font-bold font-sans text-white">480+</div>
-                      <div className="text-xs font-mono text-[#a3a3a3] uppercase mt-1">Total Active Students</div>
-                    </div>
-                    <div className="border-t border-[#262626] pt-4">
-                      <div className="text-4xl font-bold font-sans text-white">24+</div>
-                      <div className="text-xs font-mono text-[#a3a3a3] uppercase mt-1">Faculty & Lab Researchers</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Vision & Mission */}
+            {/* Top Vision & Mission Bento Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="card-frosted p-8 border border-[#0e76ff]/40 bg-[#061122] has-pin has-pin--light">
-                <Target className="w-8 h-8 text-[#0e76ff] mb-6" />
-                <h3 className="text-2xl font-bold font-sans mb-3 text-white">Department Vision</h3>
-                <p className="text-[#a3a3a3] text-base leading-relaxed italic">
-                  &ldquo;To develop professionals in Artificial Intelligence & Data Science Engineering who are socially responsible to meet the needs of society and industries.&rdquo;
-                </p>
+              
+              {/* Vision Card */}
+              <div className="bg-white rounded-3xl p-8 md:p-10 border border-black/8 shadow-sm flex flex-col justify-between group hover:shadow-lg transition-all">
+                <div>
+                  <div className="flex items-center gap-2 mb-5">
+                    <div className="w-8 h-8 rounded-xl bg-[#0038ff]/10 text-[#0038ff] flex items-center justify-center">
+                      <Target className="w-4 h-4" />
+                    </div>
+                    <span className="font-mono text-xs font-bold tracking-widest text-[#0038ff] uppercase">
+                      DEPARTMENT VISION
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-black font-sans leading-snug">
+                    FOSTERING GLOBAL AI INNOVATION
+                  </h3>
+                  <p className="text-black/65 text-sm sm:text-base font-medium leading-relaxed mt-4">
+                    To be a recognized center of excellence in Artificial Intelligence & Data Science, producing ethically responsible technocrats capable of solving complex societal and industrial challenges.
+                  </p>
+                </div>
+                <div className="mt-8 pt-5 border-t border-black/8 flex items-center gap-2 text-xs font-mono font-bold text-black/50 uppercase">
+                  <span>PILLAR 01</span> · <span>EXCELLENCE IN AI</span>
+                </div>
               </div>
 
-              <div className="card-frosted p-8 border border-white/10 has-pin has-pin--light">
-                <Compass className="w-8 h-8 text-[#0e76ff] mb-6" />
-                <h3 className="text-2xl font-bold font-sans mb-3 text-white">Department Mission</h3>
-                <ul className="text-[#a3a3a3] text-sm leading-relaxed space-y-3 font-medium">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#0e76ff] mt-2 shrink-0" />
-                    <span>To offer a strong base knowledge through theory, hands-on lab experience, and the use of latest technology.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#0e76ff] mt-2 shrink-0" />
-                    <span>To offer a platform for engaging with professionals from the industry.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#0e76ff] mt-2 shrink-0" />
-                    <span>To inculcate social awareness through co-curricular and extracurricular activities.</span>
-                  </li>
-                </ul>
+              {/* Mission Card */}
+              <div className="bg-white rounded-3xl p-8 md:p-10 border border-black/8 shadow-sm flex flex-col justify-between group hover:shadow-lg transition-all">
+                <div>
+                  <div className="flex items-center gap-2 mb-5">
+                    <div className="w-8 h-8 rounded-xl bg-[#ccff00] text-black flex items-center justify-center">
+                      <Compass className="w-4 h-4" />
+                    </div>
+                    <span className="font-mono text-xs font-bold tracking-widest text-black/70 uppercase">
+                      DEPARTMENT MISSION
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-black font-sans leading-snug">
+                    HOLISTIC PEDAGOGY & RESEARCH
+                  </h3>
+                  <ul className="space-y-3 mt-4 text-sm sm:text-base text-black/65 font-medium leading-relaxed">
+                    <li className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#0038ff] shrink-0 mt-1" />
+                      <span>Deliver industry-aligned curriculum combining theoretical rigor and hands-on laboratory experimentation.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#0038ff] shrink-0 mt-1" />
+                      <span>Promote interdisciplinary research, patent filings, and capstone engineering solving real-world needs.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-8 pt-5 border-t border-black/8 flex items-center gap-2 text-xs font-mono font-bold text-black/50 uppercase">
+                  <span>PILLAR 02</span> · <span>HOLISTIC IMPACT</span>
+                </div>
               </div>
+
             </div>
 
-            {/* Core Domains */}
+            {/* 4 Specialized Domains Grid */}
             <div>
-              <div className="mono-small text-[#0e76ff] font-bold mb-6">CORE TECHNICAL DOMAINS</div>
+              <div className="mb-8">
+                <span className="font-mono text-xs font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
+                  SPECIALIZED CURRICULUM
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-3 font-sans">
+                  4 CORE RESEARCH DOMAINS
+                </h2>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {domains.map((dom, idx) => {
+                {domains.map((dom, i) => {
                   const Icon = dom.icon;
                   return (
-                    <div key={idx} className="card-frosted p-6 border border-white/10 has-pin has-pin--light">
-                      <Icon className="w-6 h-6 text-[#0e76ff] mb-4" />
-                      <h4 className="font-bold text-lg font-sans mb-2 text-white">{dom.title}</h4>
-                      <p className="text-xs text-[#a3a3a3] leading-relaxed">{dom.desc}</p>
+                    <div
+                      key={dom.title}
+                      className="bg-white rounded-3xl p-6 sm:p-7 border border-black/8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="w-12 h-12 rounded-2xl bg-[#0038ff]/10 text-[#0038ff] flex items-center justify-center mb-6">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <h4 className="text-lg font-black uppercase tracking-tight text-black font-sans">
+                          {dom.title}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-black/60 font-medium leading-relaxed mt-2.5">
+                          {dom.desc}
+                        </p>
+                      </div>
+                      <div className="mt-6 pt-4 border-t border-black/8 font-mono text-[10px] font-bold text-black/40 uppercase">
+                        DOMAIN 0{i + 1}
+                      </div>
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* PEOs and PSOs */}
+            {/* PEOs and PSOs Bento Lists */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="card-frosted p-8 border border-white/10 has-pin has-pin--light space-y-6">
-                <h3 className="text-2xl font-bold font-sans text-white flex items-center gap-3">
-                  <BookOpen className="w-6 h-6 text-[#0e76ff]" />
-                  Program Educational Objectives (PEOs)
-                </h3>
-                <div className="space-y-4">
-                  {peos.map((peo, idx) => (
-                    <div key={idx} className="p-4 bg-[#080d1a] border border-[#262626] space-y-1">
-                      <span className="mono-small text-[#0e76ff] font-bold">{peo.number}</span>
-                      <h4 className="font-bold text-sm text-white">{peo.title}</h4>
-                      <p className="text-xs text-[#a3a3a3] leading-relaxed">{peo.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="card-frosted p-8 border border-white/10 has-pin has-pin--light space-y-6">
-                <h3 className="text-2xl font-bold font-sans text-white flex items-center gap-3">
-                  <ShieldCheck className="w-6 h-6 text-[#0e76ff]" />
-                  Program Specific Outcomes (PSOs)
-                </h3>
-                <div className="space-y-4">
-                  {psos.map((pso, idx) => (
-                    <div key={idx} className="p-4 bg-[#080d1a] border border-[#262626] space-y-1">
-                      <span className="mono-small text-[#0e76ff] font-bold">{pso.number}</span>
-                      <h4 className="font-bold text-sm text-white">{pso.title}</h4>
-                      <p className="text-xs text-[#a3a3a3] leading-relaxed">{pso.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        )}
-
-        {/* TAB 2: LEADERSHIP MESSAGES */}
-        {activeTab === "leadership" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {leadership.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={idx} className="card-frosted p-8 border border-white/10 has-pin has-pin--light space-y-6 flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="mono-small bg-[#0e76ff] text-white px-2.5 py-1 text-xs">
-                        {item.badge}
-                      </span>
-                      <Icon className="w-6 h-6 text-[#0e76ff]" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-sans text-white mb-1">{item.name}</h3>
-                    <div className="text-xs font-mono text-[#0e76ff] mb-4">{item.role}</div>
-                    <div className="relative pt-4 border-t border-[#262626]">
-                      <Quote className="w-8 h-8 text-[#0e76ff]/20 absolute -top-3 -left-2" />
-                      <p className="text-sm text-[#a3a3a3] leading-relaxed italic pl-6 font-sans">
-                        &ldquo;{item.quote}&rdquo;
+              
+              {/* PEOs */}
+              <div className="bg-white rounded-3xl p-8 border border-black/8 shadow-sm">
+                <span className="font-mono text-xs font-bold text-[#0038ff] uppercase tracking-wider block mb-4">
+                  PROGRAM EDUCATIONAL OBJECTIVES (PEOs)
+                </span>
+                <div className="space-y-6">
+                  {peos.map((peo) => (
+                    <div key={peo.number} className="border-b border-black/8 pb-5 last:border-b-0 last:pb-0">
+                      <div className="font-mono text-xs font-black text-[#0038ff] uppercase">
+                        {peo.number}
+                      </div>
+                      <h4 className="text-base font-bold text-black mt-0.5 font-sans">
+                        {peo.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-black/60 font-medium mt-1.5 leading-relaxed">
+                        {peo.desc}
                       </p>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+
+              {/* PSOs */}
+              <div className="bg-white rounded-3xl p-8 border border-black/8 shadow-sm">
+                <span className="font-mono text-xs font-bold text-[#0038ff] uppercase tracking-wider block mb-4">
+                  PROGRAM SPECIFIC OBJECTIVES (PSOs)
+                </span>
+                <div className="space-y-6">
+                  {psos.map((pso) => (
+                    <div key={pso.number} className="border-b border-black/8 pb-5 last:border-b-0 last:pb-0">
+                      <div className="font-mono text-xs font-black text-[#0038ff] uppercase">
+                        {pso.number}
+                      </div>
+                      <h4 className="text-base font-bold text-black mt-0.5 font-sans">
+                        {pso.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-black/60 font-medium mt-1.5 leading-relaxed">
+                        {pso.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
           </div>
         )}
 
-        {/* TAB 3: ACADEMICS & TOPPERS */}
-        {activeTab === "academics" && (
-          <div className="space-y-16">
-            
-            {/* Academic Toppers */}
-            <div>
-              <div className="mono-small text-[#0e76ff] font-bold mb-4 flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-[#0e76ff]" />
-                DEPARTMENT ACADEMIC TOPPERS
+        {/* ── TAB 2: LEADERSHIP ── */}
+        {activeTab === "leadership" && (
+          <div className="space-y-8">
+            {leadership.map((item) => (
+              <div
+                key={item.name}
+                className="bg-white rounded-3xl md:rounded-[36px] p-8 sm:p-12 border border-black/8 shadow-sm flex flex-col md:flex-row gap-8 items-start justify-between"
+              >
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-3 py-1 bg-[#ccff00] text-black font-mono text-[10px] font-black uppercase rounded-full tracking-wider">
+                      {item.badge}
+                    </span>
+                    <span className="font-mono text-xs font-bold text-black/40 uppercase">
+                      {item.title}
+                    </span>
+                  </div>
+
+                  <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-black font-sans">
+                    {item.name}
+                  </h3>
+                  <div className="text-sm font-bold text-[#0038ff] font-mono mt-1">
+                    {item.role}
+                  </div>
+
+                  <div className="relative mt-6 pt-6 border-t border-black/8">
+                    <Quote className="w-8 h-8 text-[#0038ff]/20 absolute top-4 left-0 -translate-y-1/2" />
+                    <p className="text-base sm:text-lg text-black/75 font-medium leading-relaxed italic pl-6">
+                      "{item.quote}"
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h2 className="text-3xl font-bold font-sans mb-8">Semester Excellence Rankers</h2>
-              
-              {toppers.length === 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { rank: "Rank 1", name: "Siddhi Kadam", sgpa: "9.82 SGPA", batch: "TE AI & DS" },
-                    { rank: "Rank 2", name: "Aditya Patil", sgpa: "9.65 SGPA", batch: "TE AI & DS" },
-                    { rank: "Rank 3", name: "Rohan Deshmukh", sgpa: "9.48 SGPA", batch: "TE AI & DS" }
-                  ].map((t, idx) => (
-                    <div key={idx} className="card-frosted p-6 border border-white/10 has-pin has-pin--light">
-                      <div className="mono-small text-[#0e76ff] font-bold mb-2">{t.rank} • {t.batch}</div>
-                      <h3 className="text-xl font-bold text-white font-sans">{t.name}</h3>
-                      <div className="text-sm font-mono text-[#a3a3a3] mt-2">{t.sgpa}</div>
+            ))}
+          </div>
+        )}
+
+        {/* ── TAB 3: ACADEMICS & TOPPERS ── */}
+        {activeTab === "academics" && (
+          <div className="space-y-12">
+            
+            {/* University Toppers Section */}
+            <div>
+              <div className="mb-8">
+                <span className="font-mono text-xs font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
+                  MUMBAI UNIVERSITY RANKINGS
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-3 font-sans">
+                  DEPARTMENT MERIT TOPPERS
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {(toppers && toppers.length > 0 ? toppers : [
+                  { id: "1", name: "Aarav Sharma", year: "Final Year", semester: "Sem VII", sgpa: "9.82", rank: 1 },
+                  { id: "2", name: "Isha Patel", year: "Final Year", semester: "Sem VII", sgpa: "9.68", rank: 2 },
+                  { id: "3", name: "Rohan Deshmukh", year: "Third Year", semester: "Sem V", sgpa: "9.54", rank: 3 },
+                  { id: "4", name: "Ananya Joshi", year: "Third Year", semester: "Sem V", sgpa: "9.45", rank: 4 },
+                  { id: "5", name: "Kunal Shinde", year: "Second Year", semester: "Sem III", sgpa: "9.41", rank: 5 },
+                  { id: "6", name: "Pooja Nair", year: "Second Year", semester: "Sem III", sgpa: "9.36", rank: 6 }
+                ]).map((t: any, idx: number) => (
+                  <div
+                    key={t.id || idx}
+                    className="bg-white rounded-3xl p-6 sm:p-7 border border-black/8 shadow-sm flex flex-col justify-between group hover:shadow-md transition-all"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="px-3 py-1 bg-[#0038ff] text-white font-mono text-[10px] font-black uppercase rounded-full">
+                          RANK #{t.rank || idx + 1}
+                        </span>
+                        <div className="text-2xl font-black text-[#0038ff] font-mono">
+                          {t.sgpa} <span className="text-xs font-bold text-black/40">SGPA</span>
+                        </div>
+                      </div>
+
+                      <h4 className="text-xl font-black uppercase tracking-tight text-black font-sans">
+                        {t.name}
+                      </h4>
+                      <p className="text-xs font-mono text-black/50 mt-1 uppercase">
+                        {t.year} · {t.semester}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {toppers.map((t, idx) => (
-                    <div key={idx} className="card-frosted p-6 border border-white/10 has-pin has-pin--light">
-                      <div className="mono-small text-[#0e76ff] font-bold mb-2">{t.rank} • {t.yearBatch} ({t.semType} Sem)</div>
-                      <h3 className="text-xl font-bold text-white font-sans">{t.name}</h3>
-                      <div className="text-sm font-mono text-[#a3a3a3] mt-2">{t.sgpa} SGPA</div>
+
+                    <div className="mt-6 pt-4 border-t border-black/8 flex items-center justify-between text-xs font-mono font-bold text-black/40 uppercase">
+                      <span>ACPCE AI&DS</span>
+                      <span className="text-emerald-600">DISTINCTION</span>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* NPTEL & Domain Certifications */}
-            <div>
-              <div className="mono-small text-[#0e76ff] font-bold mb-4 flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#0e76ff]" />
-                NATIONAL NPTEL DOMAIN CERTIFICATIONS
+            {/* NPTEL Certifications */}
+            <div className="pt-8 border-t border-black/8">
+              <div className="mb-8">
+                <span className="font-mono text-xs font-bold tracking-widest text-[#0038ff] uppercase bg-[#0038ff]/10 px-3 py-1 rounded-full">
+                  SWAYAM NPTEL HONORS
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-3 font-sans">
+                  ELITE & GOLD CERTIFICATIONS
+                </h2>
               </div>
-              <h2 className="text-3xl font-bold font-sans mb-8">NPTEL Top Performers</h2>
 
-              {nptel.length === 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    { name: "Mrs. Shilpali Bansu", course: "Deep Learning (NPTEL Domain Elite + Gold)", score: "94% Score", year: "2025" },
-                    { name: "Pranav Mhatre", course: "Python for Data Science (Elite Certified)", score: "89% Score", year: "2025" }
-                  ].map((n, idx) => (
-                    <div key={idx} className="card-frosted p-6 border border-white/10 has-pin has-pin--light flex justify-between items-center">
-                      <div>
-                        <h3 className="text-lg font-bold text-white font-sans">{n.name}</h3>
-                        <p className="text-xs text-[#a3a3a3] mt-1">{n.course}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {(nptel && nptel.length > 0 ? nptel : [
+                  { id: "1", candidate_name: "Prof. Shilpali Bansu", course_name: "Deep Learning (IIT Ropar)", badge: "Elite + Gold (Top 1%)", score: "94%" },
+                  { id: "2", candidate_name: "Mihir Gosavi", course_name: "Natural Language Processing (IIT Madras)", badge: "Elite + Silver", score: "88%" },
+                  { id: "3", candidate_name: "Tanay Kotian", course_name: "Applied Accelerated AI (IIT Kharagpur)", badge: "Elite + Silver", score: "86%" },
+                  { id: "4", candidate_name: "Vedant Patil", course_name: "Cloud Computing & Distributed Systems", badge: "Elite Certification", score: "81%" }
+                ]).map((n: any, idx: number) => (
+                  <div
+                    key={n.id || idx}
+                    className="bg-white rounded-3xl p-7 border border-black/8 shadow-sm flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-4 mb-4">
+                        <span className="px-3 py-1 bg-[#ccff00] text-black font-mono text-[10px] font-black uppercase rounded-full">
+                          {n.badge}
+                        </span>
+                        <span className="font-mono text-xl font-black text-black">
+                          {n.score}
+                        </span>
                       </div>
-                      <div className="mono-small bg-[#0e76ff]/20 text-[#0e76ff] px-3 py-1 border border-[#0e76ff]/30 font-bold shrink-0">
-                        {n.score}
-                      </div>
+
+                      <h4 className="text-xl font-black uppercase tracking-tight text-black font-sans">
+                        {n.course_name}
+                      </h4>
+                      <p className="text-xs font-mono text-[#0038ff] font-bold mt-1 uppercase">
+                        Candidate: {n.candidate_name}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {nptel.map((n, idx) => (
-                    <div key={idx} className="card-frosted p-6 border border-white/10 has-pin has-pin--light flex justify-between items-center">
-                      <div>
-                        <h3 className="text-lg font-bold text-white font-sans">{n.name}</h3>
-                        <p className="text-xs text-[#a3a3a3] mt-1">{n.course}</p>
-                      </div>
-                      <div className="mono-small bg-[#0e76ff]/20 text-[#0e76ff] px-3 py-1 border border-[#0e76ff]/30 font-bold shrink-0">
-                        {n.score}
-                      </div>
+
+                    <div className="mt-6 pt-4 border-t border-black/8 flex items-center justify-between text-xs font-mono font-bold text-black/40 uppercase">
+                      <span>NPTEL IIT CERTIFIED</span>
+                      <span>NATIONAL RECOGNITION</span>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
         )}
 
       </div>
+
     </div>
   );
 }
